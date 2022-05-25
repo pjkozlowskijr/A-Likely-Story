@@ -1,3 +1,3 @@
-# Patrick's Bookstore
+# Authors' Attic
 
-Welcome to Patrick's bookstore! 
+A bookstore built with React.
