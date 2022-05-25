@@ -70,7 +70,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft({children}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -138,7 +138,7 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-
+            {children}
       </Main>
     </Box>
   );
