@@ -4,6 +4,7 @@ import Rating from './components/Rating';
 import Autocomplete from './components/Autocomplete';
 import Card from './components/Card';
 import LoginForm from './forms/LoginForm';
+import ProfileForm from './forms/ProfileForm';
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Card/>
       <br/>
       <LoginForm/>
+      <br/>
+      <ProfileForm/>
     </Navbar>
   );
 }
