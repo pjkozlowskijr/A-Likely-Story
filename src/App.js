@@ -1,8 +1,9 @@
 import './App.css';
-import Navbar from './components/Navbar'
-import Rating from './components/Rating'
-import Autocomplete from './components/Autocomplete'
-import Card from './components/Card'
+import Navbar from './components/Navbar';
+import Rating from './components/Rating';
+import Autocomplete from './components/Autocomplete';
+import Card from './components/Card';
+import LoginForm from './forms/LoginForm';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <Autocomplete/>
       <br/>
       <Card/>
+      <br/>
+      <LoginForm/>
     </Navbar>
   );
 }
