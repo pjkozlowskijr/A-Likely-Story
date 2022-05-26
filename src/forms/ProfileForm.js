@@ -14,13 +14,23 @@ const FormSchema = Yup.object(
     }
 )
 
-export default function ProfileForm({user}){
+export default function ProfileForm({user 
+    // = {
+    // firstName: 'patrick',
+    // lastName: 'koz',
+    // email: 'pk@pk.com',
+    // password: '123',
+    // confirm_pass: '123',
+    // }
+    }){
     const initialValues = {
         firstName: user?.firstName ?? '',
         lastName: user?.lastName ?? '',
         email: user?.email ?? '',
         password: '',
         confirm_pass: ''
+        // password: user?.password ?? '',
+        // confirm_pass: user?.confirm_pass ?? ''
     }
 
     const handleSubmit = (values, resetForm) => {
