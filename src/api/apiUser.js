@@ -61,7 +61,6 @@ const del = async (token, cancelToken) => {
     return response.ok
 }
 
-
 export default {
     post,
     get,

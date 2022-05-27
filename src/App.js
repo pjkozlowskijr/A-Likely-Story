@@ -8,19 +8,11 @@ import ProfileForm from './forms/ProfileForm';
 import Button from './components/Button';
 import { CancelToken } from 'apisauce';
 import apiUser from './api/apiUser'
-
-const patrick = {
-  email: 'w@k.com',
-  password: '123',
-  // first_name: 'w',
-  // last_name: 'k'
-}
-
-const myToken = 'mRW_gJYHX44fHCwqnuBtCVWEjzSD1IorKFeBQsl4X2o'
+import apiBook from './api/apiBook'
 
 const handleAPITest = async () => {
   const source = CancelToken.source();
-  const responseObject = await apiUser.del(myToken, source.token)
+  const responseObject = await apiBook.getBook(19, source.token)
   console.log(responseObject)
 }
 
