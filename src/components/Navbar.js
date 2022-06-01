@@ -16,13 +16,12 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { MenuBook } from '@mui/icons-material';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const drawerWidth = 200;
 
@@ -126,8 +125,8 @@ export default function PersistentDrawerLeft({children}) {
         <Divider />
         <List>
           {
-          [{label: 'Shop', path: '', icon: <MenuBookOutlinedIcon/>}, 
-          {label: 'Cart', path: '', icon: <ShoppingCartOutlinedIcon/>}, 
+          [{label: 'Browse', path: '', icon: <SearchOutlinedIcon/>}, 
+          {label: 'Reading List', path: '', icon: <MenuBookOutlinedIcon/>}, 
           {label: 'Register', path: '', icon: <AppRegistrationOutlinedIcon/>}, 
           {label: 'Login', path: '', icon: <LoginOutlinedIcon/>}, 
           {label: 'Account', path: '', icon: <AccountCircleOutlinedIcon/>}, 
