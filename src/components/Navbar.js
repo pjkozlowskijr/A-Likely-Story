@@ -18,10 +18,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
-// import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
-// import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-// import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-// import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { MenuBook } from '@mui/icons-material';
 
 const drawerWidth = 200;
 
@@ -124,13 +125,19 @@ export default function PersistentDrawerLeft({children}) {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Shop', 'Cart', 'Register', 'Login', 'Account', 'Logout'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {
+          [{label: 'Shop', path: '', icon: <MenuBookOutlinedIcon/>}, 
+          {label: 'Cart', path: '', icon: <ShoppingCartOutlinedIcon/>}, 
+          {label: 'Register', path: '', icon: <AppRegistrationOutlinedIcon/>}, 
+          {label: 'Login', path: '', icon: <LoginOutlinedIcon/>}, 
+          {label: 'Account', path: '', icon: <AccountCircleOutlinedIcon/>}, 
+          {label: 'Logout', path: '', icon: <LogoutOutlinedIcon/>}].map((navItem) => (
+            <ListItem key={navItem.label} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <MenuBookOutlinedIcon /> : <ShoppingCartOutlinedIcon />}
+                  {navItem.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={navItem.label} />
               </ListItemButton>
             </ListItem>
           ))}
