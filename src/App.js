@@ -9,7 +9,7 @@ import Button from './components/Button';
 import { CancelToken } from 'apisauce';
 import apiUser from './api/apiUser'
 import apiBook from './api/apiBook'
-import ViewAllBooks from './components/ViewAllBooks'
+import BrowseAllBooks from './components/BrowseAllBooks'
 
 const handleAPITest = async () => {
   const source = CancelToken.source();
@@ -20,7 +20,7 @@ const handleAPITest = async () => {
 function App() {
   return (
     <Navbar>
-      <ViewAllBooks/>
+      <BrowseAllBooks/>
     </Navbar>
   );
 }

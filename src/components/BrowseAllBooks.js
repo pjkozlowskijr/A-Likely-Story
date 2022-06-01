@@ -13,6 +13,7 @@ import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOut
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Grid from '@mui/material/Grid';
+import { CardMedia } from '@mui/material';
 
 const book1 = {
   id: 1,
@@ -76,7 +77,7 @@ const ExpandMore = styled((props) => {
     transition: theme.transitions.create('transform', {duration: theme.transitions.duration.shortest})
   }));
 
-export default function ViewAllBooks() {
+export default function BrowseAllBooks() {
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -85,13 +86,15 @@ export default function ViewAllBooks() {
     return (
         <Grid container spacing={2}>
             {books.map((book) => (
-            <Grid item md={3}>
+            <Grid key={book.id} item md={3}>
                 <Card>
                 <CardHeader
                     title={book.title}
                     subheader={book.author_first+' '+book.author_last}
                 />
-                <img src={book.image} height='250' alt="Book cover."/>
+                <CardMedia
+                  component='img' image={book.image} height='250' alt={`Book cover for ${book.title}`} sx={{objectFit:'contain'}}
+                />
                 <CardActions disableSpacing>
                     <IconButton aria-label="add-to-readlist">
                         <AddCircleOutlineOutlinedIcon />
@@ -99,10 +102,10 @@ export default function ViewAllBooks() {
                     <IconButton aria-label="remove-from-readlist">
                         <RemoveCircleOutlineOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="read-or-unread">
+                    <IconButton aria-label="unread">
                         <VisibilityOffOutlinedIcon />
                     </IconButton>
-                    <IconButton aria-label="read-or-unread">
+                    <IconButton aria-label="read">
                         <VisibilityOutlinedIcon />
                     </IconButton>
                     <ExpandMore
