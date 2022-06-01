@@ -1,19 +1,15 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Grid from '@mui/material/Grid';
 import { CardMedia } from '@mui/material';
+import { CardActionArea } from '@mui/material';
 
 const book1 = {
   id: 1,
@@ -68,63 +64,35 @@ const book5 = {
 
 const books = [book1, book2, book3, book4, book5]
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-  })(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {duration: theme.transitions.duration.shortest})
-  }));
-
 export default function BrowseAllBooks() {
-    const [expanded, setExpanded] = React.useState(false);
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
     return (
         <Grid container spacing={2}>
             {books.map((book) => (
             <Grid key={book.id} item md={3}>
                 <Card>
-                <CardHeader
-                    title={book.title}
-                    subheader={book.author_first+' '+book.author_last}
-                />
-                <CardMedia
-                  component='img' image={book.image} height='250' alt={`Book cover for ${book.title}`} sx={{objectFit:'contain'}}
-                />
-                <CardActions disableSpacing>
-                    <IconButton aria-label="add-to-readlist">
-                        <AddCircleOutlineOutlinedIcon />
-                    </IconButton>
-                    <IconButton aria-label="remove-from-readlist">
-                        <RemoveCircleOutlineOutlinedIcon />
-                    </IconButton>
-                    <IconButton aria-label="unread">
-                        <VisibilityOffOutlinedIcon />
-                    </IconButton>
-                    <IconButton aria-label="read">
-                        <VisibilityOutlinedIcon />
-                    </IconButton>
-                    <ExpandMore
-                        expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                        >
-                        <ExpandMoreIcon />
-                    </ExpandMore>
-                </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                    <Typography>
-                        Pages: {book.pages}<br/>
-                        {book.summary}
-                    </Typography>
-                    </CardContent>
-                </Collapse>
+                  <CardActionArea>
+                    <CardHeader
+                        title={book.title}
+                        subheader={'By: '+book.author_first+' '+book.author_last}
+                    />
+                    <CardMedia
+                      component='img' image={book.image} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:250}}
+                    />
+                    <CardActions disableSpacing>
+                        <IconButton aria-label="add-to-readlist">
+                            <AddCircleOutlineOutlinedIcon />
+                        </IconButton>
+                        <IconButton aria-label="remove-from-readlist">
+                            <RemoveCircleOutlineOutlinedIcon />
+                        </IconButton>
+                        <IconButton aria-label="unread">
+                            <VisibilityOffOutlinedIcon />
+                        </IconButton>
+                        <IconButton aria-label="read">
+                            <VisibilityOutlinedIcon />
+                        </IconButton>
+                    </CardActions>
+                  </CardActionArea>
                 </Card>
             </Grid>
             ))}
