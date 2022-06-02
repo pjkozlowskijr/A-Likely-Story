@@ -12,6 +12,7 @@ import apiBook from './api/apiBook'
 import BrowseAllBooks from './components/BrowseAllBooks'
 import UserBooks from './components/UserBooks'
 import SingleBook from './components/SingleBook'
+import FilterBooks from './components/FilterBooks'
 
 const handleAPITest = async () => {
   const source = CancelToken.source();
@@ -22,7 +23,7 @@ const handleAPITest = async () => {
 function App() {
   return (
     <Navbar>
-    <SingleBook/>
+      <BrowseAllBooks/>
     </Navbar>
   );
 }

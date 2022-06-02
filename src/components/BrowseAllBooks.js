@@ -10,6 +10,7 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Grid from '@mui/material/Grid';
 import { CardMedia } from '@mui/material';
 import { CardActionArea } from '@mui/material';
+import FilterBooks from './FilterBooks';
 
 const book1 = {
   id: 1,
@@ -65,37 +66,44 @@ const book5 = {
 const books = [book1, book2, book3, book4, book5]
 
 export default function BrowseAllBooks() {
-    return (
+  return (
+    <Grid container spacing={2}>
+      <Grid item md={2}>
+        <FilterBooks/>
+      </Grid>
+      <Grid item md={10}>
         <Grid container spacing={2}>
-            {books.map((book) => (
+          {books.map((book) => (
             <Grid key={book.id} item md={3}>
-                <Card>
-                  <CardActionArea>
-                    <CardHeader
-                        title={book.title}
-                        subheader={'By: '+book.author_first+' '+book.author_last}
-                    />
-                    <CardMedia
-                      component='img' image={book.image} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:250}}
-                    />
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add-to-readlist">
-                            <AddCircleOutlineOutlinedIcon />
-                        </IconButton>
-                        <IconButton aria-label="remove-from-readlist">
-                            <RemoveCircleOutlineOutlinedIcon />
-                        </IconButton>
-                        <IconButton aria-label="unread">
-                            <VisibilityOffOutlinedIcon />
-                        </IconButton>
-                        <IconButton aria-label="read">
-                            <VisibilityOutlinedIcon />
-                        </IconButton>
-                    </CardActions>
-                  </CardActionArea>
-                </Card>
+              <Card>
+                <CardActionArea>
+                  <CardHeader
+                  title={book.title}
+                  subheader={'By: '+book.author_first+' '+book.author_last}
+                  />
+                  <CardMedia
+                  component='img' image={book.image} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:250}}
+                  />
+                  <CardActions disableSpacing>
+                    <IconButton aria-label="add-to-readlist">
+                      <AddCircleOutlineOutlinedIcon />
+                    </IconButton>
+                    <IconButton aria-label="remove-from-readlist">
+                      <RemoveCircleOutlineOutlinedIcon />
+                    </IconButton>
+                      <IconButton aria-label="unread">
+                      <VisibilityOffOutlinedIcon />
+                      </IconButton>
+                    <IconButton aria-label="read">
+                      <VisibilityOutlinedIcon />
+                    </IconButton>
+                  </CardActions>
+                </CardActionArea>
+              </Card>
             </Grid>
-            ))}
+          ))}
         </Grid>
-    );
+      </Grid>
+    </Grid>
+  );
 }

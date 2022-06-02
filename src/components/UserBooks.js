@@ -77,53 +77,53 @@ const ExpandMore = styled((props) => {
   }));
 
 export default function UserBooks() {
-    const [expanded, setExpanded] = React.useState(false);
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
+  const [expanded, setExpanded] = React.useState(false);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
     };
 
-    return (
-        <Grid container spacing={2}>
-            {books.map((book) => (
-            <Grid key={book.id} item md={3}>
-                <Card>
-                <CardHeader
-                    title={book.title}
-                    subheader={'By: '+book.author_first+' '+book.author_last}
-                />
-                <CardMedia
-                  component='img' image={book.image} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:250}}
-                />
-                <CardActions disableSpacing>
-                    <IconButton aria-label="remove-from-readlist">
-                        <RemoveCircleOutlineOutlinedIcon />
-                    </IconButton>
-                    <IconButton aria-label="unread">
-                        <VisibilityOffOutlinedIcon />
-                    </IconButton>
-                    <IconButton aria-label="read">
-                        <VisibilityOutlinedIcon />
-                    </IconButton>
-                    <ExpandMore
-                        expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                        >
-                        <ExpandMoreIcon />
-                    </ExpandMore>
-                </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                    <CardContent>
-                    <Typography>
-                        Pages: {book.pages}<br/>
-                        {book.summary}
-                    </Typography>
-                    </CardContent>
-                </Collapse>
-                </Card>
-            </Grid>
-            ))}
+  return (
+    <Grid container spacing={2}>
+      {books.map((book) => (
+        <Grid key={book.id} item md={3}>
+          <Card>
+            <CardHeader
+              title={book.title}
+              subheader={'By: '+book.author_first+' '+book.author_last}
+            />
+            <CardMedia
+              component='img' image={book.image} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:250}}
+            />
+            <CardActions disableSpacing>
+              <IconButton aria-label="remove-from-readlist">
+                <RemoveCircleOutlineOutlinedIcon />
+              </IconButton>
+              <IconButton aria-label="unread">
+                <VisibilityOffOutlinedIcon />
+              </IconButton>
+              <IconButton aria-label="read">
+                <VisibilityOutlinedIcon />
+              </IconButton>
+              <ExpandMore
+                  expand={expanded}
+                  onClick={handleExpandClick}
+                  aria-expanded={expanded}
+                  aria-label="show more"
+                  >
+                  <ExpandMoreIcon />
+              </ExpandMore>
+            </CardActions>
+              <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography>
+                    Pages: {book.pages}<br/>
+                    {book.summary}
+                  </Typography>
+                </CardContent>
+              </Collapse>
+          </Card>
         </Grid>
-    );
+      ))}
+    </Grid>
+  );
 }

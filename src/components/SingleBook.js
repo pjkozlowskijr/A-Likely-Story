@@ -40,19 +40,21 @@ export default function SingleBook() {
         </Typography>
         <CardActions sx={{p:0, mt:1, justifyContent:'center'}} disableSpacing>
             <IconButton aria-label="add-to-readlist">
-                <AddCircleOutlineOutlinedIcon />
+              <AddCircleOutlineOutlinedIcon />
             </IconButton>
             <IconButton aria-label="remove-from-readlist">
-                <RemoveCircleOutlineOutlinedIcon />
+              <RemoveCircleOutlineOutlinedIcon />
             </IconButton>
             <IconButton aria-label="unread">
-                <VisibilityOffOutlinedIcon />
+              <VisibilityOffOutlinedIcon />
             </IconButton>
             <IconButton aria-label="read">
-                <VisibilityOutlinedIcon />
+              <VisibilityOutlinedIcon />
             </IconButton>
         </CardActions>
-        <br/><Divider/><br/>
+        <br/>
+        <Divider/>
+        <br/>
         <Typography variant="h6" color="text.secondary">
           <strong>Pages:</strong> {book1.pages}
         </Typography>
