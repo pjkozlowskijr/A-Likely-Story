@@ -17,7 +17,21 @@ const AppContextProvider = ({children}) => {
         _setUser(user)
     }
 
-    const values = {user, setUser}
+    const getBooksFromLS = () => {
+        let books = localStorage.getItem('books')
+        if (books){
+            return JSON.parse(books)
+        }
+    }
+
+    const [books, _setBooks] = useState(getBooksFromLS())
+
+    const setBooks = (books) => {
+        localStorage.setItem('books', JSON.stringify(books))
+        _setUser(books)
+    }
+
+    const values = {user, setUser, books, setBooks}
 
     return (
         <AppContext.Provider value={values}>

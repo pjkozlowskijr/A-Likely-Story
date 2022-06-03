@@ -23,7 +23,7 @@ export default function FilterBooks() {
         onChange={handleChange}
       >
         {subjects.map(sub => (
-        <FormControlLabel value={sub} control={<Radio />} label={sub} />
+        <FormControlLabel key={sub} value={sub} control={<Radio />} label={sub} />
         ))}
       </RadioGroup>
     </FormControl>
