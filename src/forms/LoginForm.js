@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Button from '../components/Button';
 import { TextField } from '@mui/material';
+import useLogin from '../hooks/useLogin'
+import Error from '../components/Error'
+import {AppContext} from '../context/AppContext'
 
 const FormSchema = Yup.object(
     {
@@ -16,11 +19,18 @@ const initialValues={
     password: ''
 }
 
-const handleSubmit = (values) => {
-    console.log(values)
-}
-
 export default function LoginForm(){
+    const {setUser} = useContext(AppContext)
+    const [loginCreds, setLoginCreds] = useState({})
+    const [error, setError] = useState('')
+
+    useLogin(loginCreds, setLoginCreds, setError, setUser)
+
+    const handleSubmit = (values) => {
+        console.log(values)
+        setLoginCreds(values)
+    }
+
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: FormSchema,
@@ -54,6 +64,7 @@ export default function LoginForm(){
                 helperText = {formik.touched.password && formik.errors.password}
             />
             <Button type='submit' sx={{width:'100%'}}>Login</Button>
+            <Error>{error}</Error>
         </form>
     )
 }

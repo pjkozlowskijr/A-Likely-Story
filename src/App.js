@@ -23,7 +23,7 @@ const handleAPITest = async () => {
 function App() {
   return (
     <Navbar>
-      <BrowseAllBooks/>
+      <LoginForm/>
     </Navbar>
   );
 }
