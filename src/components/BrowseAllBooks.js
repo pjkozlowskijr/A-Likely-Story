@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
@@ -11,13 +11,13 @@ import Grid from '@mui/material/Grid';
 import { CardMedia } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import FilterBooks from './FilterBooks';
-import useBooks from '../hooks/useBooks';
 import { Box } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import Error from './Error';
+import { AppContext } from '../context/AppContext';
 
-export default function BrowseAllBooks({bookId}) {
-  const {error, books} = useBooks(bookId)
+export default function BrowseAllBooks() {
+  const {error, books} = useContext(AppContext)
 
   if (error){
     return(

@@ -14,6 +14,7 @@ export default function useDeleteUser(delUser){
                     response = await apiUser.del(user.token, source.token)
                     if (response){
                         console.log(`User ${user.user_id} deleted`)
+                        localStorage.clear()
                     }else if (response === false && response !== undefined){
                         console.log('An unexpected error occured.')
                     }

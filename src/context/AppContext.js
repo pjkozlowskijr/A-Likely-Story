@@ -1,4 +1,5 @@
 import {createContext, useState} from 'react';
+import useBooks from '../hooks/useBooks';
 
 export const AppContext = createContext();
 
@@ -19,21 +20,9 @@ const AppContextProvider = ({children}) => {
     }
 
     // Context for BOOKS
-    const getBooksFromLS = () => {
-        let books = localStorage.getItem('books')
-        if (books){
-            return JSON.parse(books)
-        }
-    }
+    const {error, books} = useBooks()
 
-    const [books, _setBooks] = useState(getBooksFromLS())
-
-    const setBooks = (books) => {
-        localStorage.setItem('books', JSON.stringify(books))
-        _setUser(books)
-    }
-
-    const values = {user, setUser, books, setBooks}
+    const values = {user, setUser, books, error}
 
     return (
         <AppContext.Provider value={values}>

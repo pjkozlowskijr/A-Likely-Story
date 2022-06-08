@@ -16,27 +16,17 @@ import FilterBooks from './components/FilterBooks'
 import { useContext } from 'react';
 import { AppContext } from './context/AppContext';
 
-let myToken = 'FuIfkILCdvcBwgbGEnGMIECgNRqwFJ-QJV8N9lRVZmM'
-
-let patrick = {
-  first_name: 'patrick',
-  last_name: 'kozlowski',
-  email: 'pk@pk.com',
-  password: '123'
-}
-
-const handleAPITest = async () => {
-  const source = CancelToken.source();
-  const responseObject = await apiUser.put(myToken, patrick, source.token)
-  console.log(responseObject)
-}
+// const handleAPITest = async () => {
+//   const source = CancelToken.source();
+//   const responseObject = await apiUser.put(myToken, patrick, source.token)
+//   console.log(responseObject)
+// }
 
 function App() {
   const {user} = useContext(AppContext)
   return (
     <Navbar>
-      <LoginForm/>
-      <ProfileForm user={user}/>
+      <BrowseAllBooks/>
     </Navbar>
   );
 }
