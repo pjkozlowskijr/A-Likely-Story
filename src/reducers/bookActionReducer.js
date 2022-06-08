@@ -2,27 +2,27 @@ const listActions = {
     addToList: 'addToList',
     addMultipleToList: 'addMultipleToList',
     removeOneFromList: 'removeFromList',
-    removeItemFromList: 'removeItemFromList',
+    removeBookFromList: 'removeItemFromList',
     emptyList: 'emptyList',
 }
 
-function bookActionReducer(list=[], {type, book}){
+function bookActionReducer(readingList=[], {type, book}){
     switch(type){
         case listActions.addToList:
-            return [...list, book];
+            return [...readingList, book];
         case listActions.addMultipleToList:
-            return [...list, ...book];
+            return [...readingList, ...book];
         case listActions.removeOneFromList:
-            let newList = list.slice()
+            let newList = readingList.slice()
             for (let listBook of newList){
-                if (listBook.id === book.id){
+                if (listBook.title === book.title){
                     newList.splice(newList.indexOf(listBook), 1)
                     return newList;
                 }
             }
             return newList;
-        case listActions.removeItemFromList:
-            return list.filter((listBook) => book.id !== listBook.id);
+        case listActions.removeBookFromList:
+            return readingList.filter((listBook) => book.title !== listBook.title);
         case listActions.emptyList:
             return []
         default:

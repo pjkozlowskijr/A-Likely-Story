@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
@@ -18,6 +18,15 @@ import { AppContext } from '../context/AppContext';
 
 export default function BrowseAllBooks() {
   const {error, books} = useContext(AppContext)
+  const {addToList, removeOneFromList, readingList} = useContext(AppContext)
+
+  const handleAddToList = (book) => {
+    addToList(book)
+  }
+
+  const handleRemoveOneFromList = (book) => {
+    removeOneFromList(book)
+  }
 
   if (error){
     return(
@@ -43,8 +52,8 @@ export default function BrowseAllBooks() {
       <Grid item md={10}>
         <Grid container spacing={2}>
           {books.map((book) => (
-            <Grid key={book.id} item md={3}>
-              <Card key={book.id}>
+            <Grid key={book.title} item md={3}>
+              <Card key={book.title}>
                 <CardActionArea>
                   <CardHeader
                   title={book.title}
@@ -55,12 +64,17 @@ export default function BrowseAllBooks() {
                   />
                 </CardActionArea>
                 <CardActions disableSpacing>
-                  <IconButton aria-label="add-to-readlist">
+                  <>
+                  {(readingList.includes(book)) ?
+                  <IconButton aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}}>
+                    <RemoveCircleOutlineOutlinedIcon/>
+                  </IconButton>
+                    :
+                  <IconButton aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}}>
                     <AddCircleOutlineOutlinedIcon />
                   </IconButton>
-                  <IconButton aria-label="remove-from-readlist">
-                    <RemoveCircleOutlineOutlinedIcon />
-                  </IconButton>
+                  }
+                  </>
                   <IconButton aria-label="unread">
                     <VisibilityOffOutlinedIcon />
                   </IconButton>

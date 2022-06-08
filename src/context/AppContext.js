@@ -27,19 +27,17 @@ const AppContextProvider = ({children}) => {
     const getListFromLS = () => {
         let readingList = localStorage.getItem('readingList')
         if (readingList){
-            return JSON.parse('readingList')
+            return JSON.parse(readingList)
         }
     }
 
-    const [readingList, dispatch] = useReducer(bookActionReducer, getListFromLS() ?? [])
+    const [readingList, dispatch] = useReducer(bookActionReducer, getListFromLS()??[])
 
     useEffect(
         () => {
-            if (readingList.length > 0){
-                localStorage.setItem('readingList', JSON.stringify(readingList))
-            }
+            localStorage.setItem('readingList', JSON.stringify(readingList))
         },
-        []
+        [readingList]
     )
 
     // Values AppContext is providing
@@ -58,10 +56,10 @@ const AppContextProvider = ({children}) => {
         removeOneFromList: (book)=>{
             dispatch({type: listActions.removeOneFromList, book})
         },
-        removeItemFromList: (book)=>{
-            dispatch({type: listActions.removeItemFromList, book})
+        removeBookFromList: (book)=>{
+            dispatch({type: listActions.removeBookFromList, book})
         },
-        emptyList: (book)=>{
+        emptyList: ()=>{
             dispatch({type: listActions.emptyList})
         }
     }

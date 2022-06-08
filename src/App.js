@@ -15,7 +15,8 @@ import SingleBook from './components/SingleBook'
 import FilterBooks from './components/FilterBooks'
 import { useContext } from 'react';
 import { AppContext } from './context/AppContext';
-import ListItem from './components/ReadingList/ListItem'
+import ReadingList from './components/ReadingList/ReadingList'
+import ListPage from './views/ListPage';
 
 // const handleAPITest = async () => {
 //   const source = CancelToken.source();
@@ -27,7 +28,8 @@ function App() {
   const {user} = useContext(AppContext)
   return (
     <Navbar>
-      <ListItem/>
+      <BrowseAllBooks/>
+      <ListPage/>
     </Navbar>
   );
 }
