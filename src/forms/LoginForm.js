@@ -7,12 +7,10 @@ import useLogin from '../hooks/useLogin'
 import Error from '../components/Error'
 import {AppContext} from '../context/AppContext'
 
-const FormSchema = Yup.object(
-    {
-        email: Yup.string().email('Must be a valid email format.').required(),
-        password: Yup.string().required()
-    }
-)
+const FormSchema = Yup.object({
+    email: Yup.string().email('Must be a valid email format.').required(),
+    password: Yup.string().required()
+    })
 
 const initialValues={
     email: '',
