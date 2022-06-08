@@ -1,46 +1,51 @@
-import React from 'react';
+import {useState} from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Button from '../components/Button';
 import { TextField } from '@mui/material';
+import useEditUser from '../hooks/useEditUser';
+import useDeleteUser from '../hooks/useDeleteUser';
+import useCreateUser from '../hooks/useCreateUser';
 
 const FormSchema = Yup.object(
     {
-        firstName: Yup.string().required(),
-        lastName: Yup.string().required(),
+        first_name: Yup.string().required(),
+        last_name: Yup.string().required(),
         email: Yup.string().email('Must be a valid email format.').required(),
         password: Yup.string().required(),
         confirm_pass: Yup.string().required().oneOf([Yup.ref('password'), null], 'Passwords must match.')
     }
 )
 
-export default function ProfileForm({user 
-    // = {
-    // firstName: 'patrick',
-    // lastName: 'koz',
-    // email: 'pk@pk.com',
-    // password: '123',
-    // confirm_pass: '123',
-    // }
-    }){
+export default function ProfileForm({user}){
+    const [createUser, setCreateUser] = useState({})
+    const [editUser, setEditUser] = useState({})
+    const [deleteUser, setDeleteUser] = useState({})
+
+    useCreateUser(createUser)
+    useEditUser(editUser)
+    useDeleteUser(deleteUser)
+
     const initialValues = {
-        firstName: user?.firstName ?? '',
-        lastName: user?.lastName ?? '',
+        first_name: user?.first_name ?? '',
+        last_name: user?.last_name ?? '',
         email: user?.email ?? '',
         password: '',
         confirm_pass: ''
-        // password: user?.password ?? '',
-        // confirm_pass: user?.confirm_pass ?? ''
     }
 
     const handleSubmit = (values, resetForm) => {
-        if (user){
-            console.log('Editing profile.')
+        if (user?.token){
+            setEditUser(values)
         }else{
-            console.log('Creating profile.')
+            setCreateUser(values)
         }
         console.log(values)
         resetForm(initialValues)
+    }
+
+    const handleDelete = () => {
+        setDeleteUser({key:'value'})
     }
 
     const formik = useFormik({
@@ -53,28 +58,28 @@ export default function ProfileForm({user
     return(
         <form onSubmit={formik.handleSubmit}>
             <TextField
-                id = 'firstName'
-                name = 'firstName'
+                id = 'first_name'
+                name = 'first_name'
                 fullWidth
                 sx={{mb:2, mt:2}}
                 label = 'First Name'
                 placeholder= 'First Name'
-                value = {formik.values.firstName}
+                value = {formik.values.first_name}
                 onChange = {formik.handleChange}
-                error = {formik.touched.firstName && Boolean(formik.errors.firstName)}
-                helperText = {formik.touched.firstName && formik.errors.firstName}
+                error = {formik.touched.first_name && Boolean(formik.errors.first_name)}
+                helperText = {formik.touched.first_name && formik.errors.first_name}
             />
             <TextField
-                id = 'lastName'
-                name = 'lastName'
+                id = 'last_name'
+                name = 'last_name'
                 fullWidth
                 sx={{mb:2, mt:2}}
                 label = 'Last Name'
                 placeholder= 'Last Name'
-                value = {formik.values.lastName}
+                value = {formik.values.last_name}
                 onChange = {formik.handleChange}
-                error = {formik.touched.lastName && Boolean(formik.errors.lastName)}
-                helperText = {formik.touched.lastName && formik.errors.lastName}
+                error = {formik.touched.last_name && Boolean(formik.errors.last_name)}
+                helperText = {formik.touched.last_name && formik.errors.last_name}
             />
             <TextField
                 id = 'email'
@@ -113,6 +118,7 @@ export default function ProfileForm({user
                 helperText = {formik.touched.confirm_pass && formik.errors.confirm_pass}
             />
             <Button type='submit' sx={{width:'100%'}}>{user ? 'Edit Profile' : 'Register'}</Button>
+            <Button color='error' onClick={() => {handleDelete()}} sx={{width:'100%'}}>Delete</Button>
         </form>
     )
 }

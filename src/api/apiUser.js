@@ -45,15 +45,7 @@ const put = async (token, data, cancelToken) => {
     let user;
 
     const response = await apiClientTokenAuth(token, cancelToken).put(endpointPPD, data);
-    if (response.ok){
-        user = response.data
-    }else{
-        error = 'An unexpected error has occured.'
-    }
-    return {
-        error,
-        user
-    }
+    return response.ok
 }
 
 const del = async (token, cancelToken) => {

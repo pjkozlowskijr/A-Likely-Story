@@ -3,6 +3,7 @@ import {createContext, useState} from 'react';
 export const AppContext = createContext();
 
 const AppContextProvider = ({children}) => {
+    // Context for USER
     const getUserFromLS = () => {
         let user = localStorage.getItem('user')
         if (user){
@@ -17,6 +18,7 @@ const AppContextProvider = ({children}) => {
         _setUser(user)
     }
 
+    // Context for BOOKS
     const getBooksFromLS = () => {
         let books = localStorage.getItem('books')
         if (books){
