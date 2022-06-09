@@ -16,7 +16,15 @@ import FilterBooks from './components/FilterBooks'
 import { useContext } from 'react';
 import { AppContext } from './context/AppContext';
 import ReadingList from './components/ReadingList/ReadingList'
-import ListPage from './views/ListPage';
+import ViewReadingList from './views/ViewReadingList';
+import Box from '@mui/material/Box'
+import {Route, Routes} from 'react-router-dom'
+import Home from './views/Home';
+import Login from './views/Login';
+import Logout from './views/Logout';
+import BrowseBooks from './views/BrowseBooks'
+import Profile from './views/Profile';
+import ViewBook from './views/ViewBook';
 
 // const handleAPITest = async () => {
 //   const source = CancelToken.source();
@@ -27,10 +35,21 @@ import ListPage from './views/ListPage';
 function App() {
   const {user} = useContext(AppContext)
   return (
-    <Navbar>
-      <BrowseAllBooks/>
-      <ListPage/>
-    </Navbar>
+    <>
+      <Navbar>
+        <Box sx={{minHeight:'90vh'}}>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/logout' element={<Logout/>}/>
+            <Route path='/browse' element={<BrowseBooks/>}/>
+            <Route path='/book/:bookId' element={<ViewBook/>}/>
+            <Route path='/list' element={<ViewReadingList/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+          </Routes>
+        </Box>
+      </Navbar>
+    </>
   );
 }
 

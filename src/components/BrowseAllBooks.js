@@ -15,10 +15,13 @@ import { Box } from '@mui/material';
 import { CircularProgress } from '@mui/material';
 import Error from './Error';
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
+import Autocomplete from './Autocomplete'
 
 export default function BrowseAllBooks() {
   const {error, books} = useContext(AppContext)
   const {addToList, removeOneFromList, readingList} = useContext(AppContext)
+  const navigate = useNavigate()
 
   const handleAddToList = (book) => {
     addToList(book)
@@ -48,15 +51,18 @@ export default function BrowseAllBooks() {
     <Grid container spacing={2}>
       <Grid item md={2}>
         <FilterBooks/>
+        <Autocomplete/>
       </Grid>
       <Grid item md={10}>
         <Grid container spacing={2}>
           {books.map((book) => (
             <Grid key={book.title} item md={3}>
               <Card key={book.title}>
-                <CardActionArea>
+                <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>
                   <CardHeader
-                  title={book.title}
+                  title={
+                    (book.title).toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                  }
                   subheader={'By: '+book.author}
                   />
                   <CardMedia
@@ -75,12 +81,12 @@ export default function BrowseAllBooks() {
                   </IconButton>
                   }
                   </>
-                  <IconButton aria-label="unread">
+                  {/* <IconButton aria-label="unread">
                     <VisibilityOffOutlinedIcon />
                   </IconButton>
                   <IconButton aria-label="read">
                     <VisibilityOutlinedIcon />
-                  </IconButton>
+                  </IconButton> */}
                 </CardActions>
               </Card>
             </Grid>

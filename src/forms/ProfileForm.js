@@ -117,7 +117,7 @@ export default function ProfileForm({user}){
                 error = {formik.touched.confirm_pass && Boolean(formik.errors.confirm_pass)}
                 helperText = {formik.touched.confirm_pass && formik.errors.confirm_pass}
             />
-            <Button type='submit' sx={{width:'100%'}}>{user ? 'Edit Profile' : 'Register'}</Button>
+            <Button type='submit' sx={{width:'100%'}}>{user?.token ? 'Edit Profile' : 'Register'}</Button>
             <Button color='error' onClick={() => {handleDelete()}} sx={{width:'100%'}}>Delete</Button>
         </form>
     )

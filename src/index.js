@@ -7,16 +7,19 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import lightTheme from './themes/LightTheme'
 import AppContextProvider from './context/AppContext';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <ThemeProvider theme={lightTheme}>
-      <AppContextProvider>
-        <CssBaseline/>
-        <App />
-      </AppContextProvider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={lightTheme}>
+        <AppContextProvider>
+          <CssBaseline/>
+          <App />
+        </AppContextProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   // </React.StrictMode>
 );
 

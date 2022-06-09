@@ -22,6 +22,7 @@ import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 200;
 
@@ -97,7 +98,9 @@ export default function PersistentDrawerLeft({children}) {
             <MenuIcon />
           </IconButton>
           <Box sx={{mr:3}}>
-            <img height="40px" src="https://res.cloudinary.com/detcvmtip/image/upload/v1653446968/bookstore/books_mbq6mq.png" alt="Books"/>
+            <Link to='/'>
+              <img height="40px" src="https://res.cloudinary.com/detcvmtip/image/upload/v1653446968/bookstore/books_mbq6mq.png" alt="Books"/>
+            </Link>
           </Box>
           <Typography variant="h6" noWrap component="div">
             Authors' Attic
@@ -125,19 +128,21 @@ export default function PersistentDrawerLeft({children}) {
         <Divider />
         <List>
           {
-          [{label: 'Browse', path: '', icon: <SearchOutlinedIcon/>}, 
-          {label: 'Reading List', path: '', icon: <MenuBookOutlinedIcon/>}, 
-          {label: 'Register', path: '', icon: <AppRegistrationOutlinedIcon/>}, 
-          {label: 'Login', path: '', icon: <LoginOutlinedIcon/>}, 
-          {label: 'Account', path: '', icon: <AccountCircleOutlinedIcon/>}, 
-          {label: 'Logout', path: '', icon: <LogoutOutlinedIcon/>}].map((navItem) => (
+          [{label: 'Browse', path: '/browse', icon: <SearchOutlinedIcon/>}, 
+          {label: 'Reading List', path: '/list', icon: <MenuBookOutlinedIcon/>}, 
+          {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>}, 
+          {label: 'Login', path: '/login', icon: <LoginOutlinedIcon/>}, 
+          {label: 'Account', path: '/profile', icon: <AccountCircleOutlinedIcon/>}, 
+          {label: 'Logout', path: '/logout', icon: <LogoutOutlinedIcon/>}].map((navItem) => (
             <ListItem key={navItem.label} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {navItem.icon}
-                </ListItemIcon>
-                <ListItemText primary={navItem.label} />
-              </ListItemButton>
+              <Link to={navItem.path}>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {navItem.icon}
+                  </ListItemIcon>
+                  <ListItemText primary={navItem.label} />
+                </ListItemButton>
+              </Link>
             </ListItem>
           ))}
         </List>

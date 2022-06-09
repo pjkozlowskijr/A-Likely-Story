@@ -10,33 +10,46 @@ import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOu
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-
-const book1 = {
-    id: 1,
-    title: 'book1',
-    subject: 'subject1',
-    summary: 'book1 summary here',
-    pages: 200,
-    image: 'https://images-na.ssl-images-amazon.com/images/I/71QcX1DbklL.jpg',
-    author_first: 'first',
-    author_last: 'last'
-  }
+import { useParams } from 'react-router-dom';
+import useBooks from '../hooks/useBooks';
+import { Box } from '@mui/system';
+import Error from './Error';
+import { CircularProgress } from '@mui/material';
 
 export default function SingleBook() {
+  const {bookId} = useParams()
+  const {book, error} = useBooks(bookId)
+
+  if (error){
+    return(
+      <Box sx={{display:'flex'}}>
+        <Error>{error}</Error>
+      </Box>
+    )
+  }
+
+  if (!book){
+    return(
+      <Box sx={{display:'flex'}}>
+        <CircularProgress/>
+      </Box>
+    )
+  }
+
   return (
     <Card sx={{display:'flex', width:'80%', margin:'auto'}}>
       <CardMedia
         component="img"
         sx={{width:'30%', height:500, objectFit:'contain', m:1}}
-        image={book1.image}
-        alt={`Book cover for ${book1.title}`}
+        image={book.img}
+        alt={`Book cover for ${book.title}`}
       />
       <CardContent sx={{width:'70%'}}>
         <Typography variant="h2" textAlign='center'>
-          {book1.title}
+          {book.title}
         </Typography>
         <Typography variant="h5" color="text.secondary" textAlign='center'>
-          By: {book1.author_first+' '+book1.author_last}
+          By: {book.author}
         </Typography>
         <CardActions sx={{p:0, mt:1, justifyContent:'center'}} disableSpacing>
             <IconButton aria-label="add-to-readlist">
@@ -56,10 +69,10 @@ export default function SingleBook() {
         <Divider/>
         <br/>
         <Typography variant="h6" color="text.secondary">
-          <strong>Pages:</strong> {book1.pages}
+          <strong>Pages:</strong> {book.pages}
         </Typography>
         <Typography variant="h6" color="text.secondary">
-          <strong>Summary:</strong> {book1.summary}
+          <strong>Summary:</strong> {book.summary}
         </Typography>
       </CardContent>
     </Card>
