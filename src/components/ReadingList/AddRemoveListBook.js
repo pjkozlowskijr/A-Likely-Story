@@ -5,8 +5,10 @@ import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOut
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
-import { ButtonGroup } from '@mui/material';
+import { ButtonGroup, ListItem } from '@mui/material';
 import { AppContext } from '../../context/AppContext';
+import { Button } from '@mui/material';
+import { List } from '@mui/material';
 
 export default function AddRemoveListBook({book}) {
     const {addToList, removeOneFromList, removeBookFromList} = useContext(AppContext)
@@ -22,23 +24,23 @@ export default function AddRemoveListBook({book}) {
     }
 
   return (
-    <ButtonGroup>
-        <IconButton aria-label="delete-all-from-readlist" onClick={()=>{removeBookFromList(book)}}>
-            <DeleteOutlineOutlinedIcon />
-        </IconButton>
-        <IconButton aria-label="add-to-readlist" onClick={()=>{addToList(book)}}>
+    <>
+        <Button aria-label="delete-all-from-readlist" variant='contained' onClick={()=>{removeBookFromList(book)}} startIcon={<DeleteOutlineOutlinedIcon />}>
+            Remove
+        </Button>
+        <Button aria-label="add-to-readlist" onClick={()=>{addToList(book)}}>
             <AddCircleOutlineOutlinedIcon />
-        </IconButton>
-        <IconButton aria-label="remove-from-readlist" onClick={()=>{removeOneFromList(book)}}>
+        </Button>
+        <Button aria-label="remove-from-readlist" onClick={()=>{removeOneFromList(book)}}>
             <RemoveCircleOutlineOutlinedIcon />
-        </IconButton>
+        </Button>
         {/* <IconButton>
             {(read === true) ?
-            <VisibilityOutlinedIcon aria-label="read" onClick={()=>{handleUnread()}}/>
-            :
-            <VisibilityOffOutlinedIcon aria-label="unread" onClick={()=>{handleRead()}}/>
+                <VisibilityOutlinedIcon aria-label="read" onClick={()=>{handleUnread()}}/>
+                :
+                <VisibilityOffOutlinedIcon aria-label="unread" onClick={()=>{handleRead()}}/>
             }
         </IconButton> */}
-    </ButtonGroup>
+    </>
   )
 }

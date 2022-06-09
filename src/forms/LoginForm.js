@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import Button from '../components/Button';
@@ -61,7 +61,7 @@ export default function LoginForm(){
                 error = {formik.touched.password && Boolean(formik.errors.password)}
                 helperText = {formik.touched.password && formik.errors.password}
             />
-            <Button type='submit' sx={{width:'100%'}}>Login</Button>
+            <Button type='submit' sx={{width:'100%', fontWeight:'bold'}}>Login</Button>
             <Error>{error}</Error>
         </form>
     )

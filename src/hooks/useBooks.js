@@ -1,9 +1,11 @@
-import {useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import apiBook from '../api/apiBook';
 import {CancelToken} from 'apisauce';
+import { AppContext } from '../context/AppContext';
 
 export default function useBooks(bookId=null){
     const [books, setBooks] = useState ({});
+    const [bookSubs, setBookSubs] = useState([])
 
     useEffect(
         () => {
@@ -17,6 +19,7 @@ export default function useBooks(bookId=null){
             (async () => {
                 const response = await apiBook.getAllBooks(source.token);
                 setBooks(response)
+                setBookSubs(response.books.map(book => book.subject))
             })()
             return () => {source.cancel()}
         },

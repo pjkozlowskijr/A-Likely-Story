@@ -49,14 +49,7 @@ export default function ListBook({book}) {
       </CardContent>
       <CardContent sx={{width:'20%'}}>
         <CardActions sx={{p:0, mt:1, justifyContent:'center'}} disableSpacing>
-            <Grid container spacing={2}>
-                <Grid item md={12}>
-                <AddRemoveListBook book={book}/>
-                </Grid>
-                <Grid item md={12}>
-                <ChangeBookQty qty={qty} book={book}/>
-                </Grid>
-            </Grid>
+          <AddRemoveListBook book={book}/>
         </CardActions>
       </CardContent>
     </Card>

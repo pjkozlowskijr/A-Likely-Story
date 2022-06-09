@@ -23,6 +23,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Link } from 'react-router-dom';
+import {AppContext} from '../context/AppContext'
 
 const drawerWidth = 200;
 
@@ -74,6 +75,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft({children}) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const {user} = React.useContext(AppContext)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -128,14 +130,20 @@ export default function PersistentDrawerLeft({children}) {
         <Divider />
         <List>
           {
-          [{label: 'Browse', path: '/browse', icon: <SearchOutlinedIcon/>}, 
-          {label: 'Reading List', path: '/list', icon: <MenuBookOutlinedIcon/>}, 
-          {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>}, 
-          {label: 'Login', path: '/login', icon: <LoginOutlinedIcon/>}, 
-          {label: 'Account', path: '/profile', icon: <AccountCircleOutlinedIcon/>}, 
-          {label: 'Logout', path: '/logout', icon: <LogoutOutlinedIcon/>}].map((navItem) => (
+          [
+            {label: 'Browse', path: '/browse', icon: <SearchOutlinedIcon/>}, 
+            {label: 'Reading List', path: '/list', icon: <MenuBookOutlinedIcon/>},
+            ((user.token)?
+            {label: 'Logout', path: '/logout', icon: <LogoutOutlinedIcon/>}
+            :
+            {label: 'Login', path: '/login', icon: <LoginOutlinedIcon/>}),
+            ((user.token)?
+            {label: 'Account', path: '/profile', icon: <AccountCircleOutlinedIcon/>}
+            :
+            {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>})
+          ].map((navItem) => (
             <ListItem key={navItem.label} disablePadding>
-              <Link to={navItem.path}>
+              <Link to={navItem.path} style={{textDecoration: 'none', color: 'inherit', width:'100%'}}>
                 <ListItemButton>
                   <ListItemIcon>
                     {navItem.icon}

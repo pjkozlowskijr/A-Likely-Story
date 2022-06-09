@@ -17,6 +17,7 @@ import Error from './Error';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Autocomplete from './Autocomplete'
+import { Button } from '@mui/material';
 
 export default function BrowseAllBooks() {
   const {error, books} = useContext(AppContext)
@@ -50,35 +51,40 @@ export default function BrowseAllBooks() {
   return (
     <Grid container spacing={2}>
       <Grid item md={2}>
-        <FilterBooks/>
         <Autocomplete/>
+        <FilterBooks/>
       </Grid>
       <Grid item md={10}>
         <Grid container spacing={2}>
           {books.map((book) => (
             <Grid key={book.title} item md={3}>
-              <Card key={book.title}>
+              <Card key={book.title} sx={{height:'60vh', display:'flex', flexDirection:'column', justifyContent:'space-between', p:2}}>
                 <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>
                   <CardHeader
                   title={
                     (book.title).toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
                   }
                   subheader={'By: '+book.author}
-                  />
-                  <CardMedia
-                  component='img' image={book.img} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:250}}
+                  sx={{p:0}}
+                  titleTypographyProps={{fontSize: 20, textAlign: 'center', fontWeight: 'bold'}}
+                  subheaderTypographyProps={{fontSize: 16, textAlign: 'center'}}
                   />
                 </CardActionArea>
-                <CardActions disableSpacing>
+                <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>
+                  <CardMedia
+                  component='img' image={book.img} alt={`Book cover for ${book.title}`} sx={{objectFit:'contain', height:'30vh'}}
+                  />
+                </CardActionArea>
+                <CardActions sx={{p:0}}>
                   <>
                   {(readingList.includes(book)) ?
-                  <IconButton aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}}>
-                    <RemoveCircleOutlineOutlinedIcon/>
-                  </IconButton>
+                  <Button sx={{margin:'auto'}} variant='contained' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
+                    Remove From List
+                  </Button>
                     :
-                  <IconButton aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}}>
-                    <AddCircleOutlineOutlinedIcon />
-                  </IconButton>
+                  <Button sx={{margin:'auto'}} variant='contained' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
+                    Add To List
+                  </Button>
                   }
                   </>
                   {/* <IconButton aria-label="unread">

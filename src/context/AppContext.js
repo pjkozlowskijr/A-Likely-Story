@@ -22,6 +22,7 @@ const AppContextProvider = ({children}) => {
 
     // Context for BOOKS
     const {error, books} = useBooks()
+    const bookSubs = books?.map(book => book.subject)
 
     // Context for READING LIST
     const getListFromLS = () => {
