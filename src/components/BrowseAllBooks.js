@@ -8,7 +8,7 @@ import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOut
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Grid from '@mui/material/Grid';
-import { CardMedia } from '@mui/material';
+import { CardMedia, Typography } from '@mui/material';
 import { CardActionArea } from '@mui/material';
 import FilterBooks from './FilterBooks';
 import { Box } from '@mui/material';
@@ -21,12 +21,12 @@ import { Button } from '@mui/material';
 import { toTitleCase } from '../helpers';
 
 export default function BrowseAllBooks() {
-  const {error, books} = useContext(AppContext)
-  const {addToList, removeOneFromList, readingList} = useContext(AppContext)
+  const {error, books, addToList, removeOneFromList, readingList, setAlert} = useContext(AppContext)
   const navigate = useNavigate()
 
   const handleAddToList = (book) => {
     addToList(book)
+    setAlert({msg:`You added ${toTitleCase(book.title)} to your reading list.`, cat:'primary'})
   }
 
   const handleRemoveOneFromList = (book) => {
@@ -78,12 +78,12 @@ export default function BrowseAllBooks() {
                 </CardActionArea>
                 <CardActions sx={{p:0}}>
                   <>
-                  {(readingList.includes(book)) ?
-                  <Button sx={{margin:'auto'}} variant='contained' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
+                  {(readingList.map(x=>x.id).includes(book.id)) ?
+                  <Button sx={{margin:'auto', width:'100%'}} variant='contained' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
                     Remove From List
                   </Button>
                     :
-                  <Button sx={{margin:'auto'}} variant='contained' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
+                  <Button sx={{margin:'auto', width:'100%'}} variant='contained' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
                     Add To List
                   </Button>
                   }

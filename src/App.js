@@ -25,6 +25,7 @@ import Logout from './views/Logout';
 import BrowseBooks from './views/BrowseBooks'
 import Profile from './views/Profile';
 import ViewBook from './views/ViewBook';
+import AlertPopUp from './components/AlertPopUp'
 
 // const handleAPITest = async () => {
 //   const source = CancelToken.source();
@@ -36,6 +37,7 @@ function App() {
   const {user} = useContext(AppContext)
   return (
     <>
+      <AlertPopUp/>
       <Navbar>
         <Box sx={{minHeight:'90vh'}}>
           <Routes>

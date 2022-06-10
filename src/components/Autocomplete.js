@@ -4,12 +4,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
-import {sortAlpha, toTitleCase} from '../helpers'
+import {sortTitleAlpha, toTitleCase} from '../helpers'
 
 export default function Playground() {
   const navigate = useNavigate()
   let {books} = useContext(AppContext)
-  books = books.sort(sortAlpha)
+  books = books.sort(sortTitleAlpha)
 
   const handleChange = (event, value) => {
     console.log(value)

@@ -1,7 +1,7 @@
 import {createContext, useEffect, useReducer, useState} from 'react';
 import useBooks from '../hooks/useBooks';
 import { bookActionReducer, listActions } from '../reducers/bookActionReducer';
-import {sortAlpha} from '../helpers'
+import {sortTitleAlpha, sortAlpha} from '../helpers'
 
 export const AppContext = createContext();
 
@@ -23,8 +23,9 @@ const AppContextProvider = ({children}) => {
 
     // Context for BOOKS
     let {error, books} = useBooks()
-    books = books?.sort(sortAlpha)
-    const bookSubs = new Set(books?.map(book => book.subject))
+    books = books?.sort(sortTitleAlpha)
+    let bookSubs = new Set(books?.map(book => book.subject))
+    bookSubs = ([...bookSubs]).sort(sortAlpha)
 
     // Context for READING LIST
     const getListFromLS = () => {
@@ -43,8 +44,13 @@ const AppContextProvider = ({children}) => {
         [readingList]
     )
 
+    // Context for ALERTS
+    const [alert, setAlert] = useState({})
+
     // Values AppContext is providing
     const values = {
+        alert,
+        setAlert,
         user, 
         setUser, 
         books,

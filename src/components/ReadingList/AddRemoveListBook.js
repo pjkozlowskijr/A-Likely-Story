@@ -28,12 +28,6 @@ export default function AddRemoveListBook({book}) {
         <Button aria-label="delete-all-from-readlist" variant='contained' onClick={()=>{removeBookFromList(book)}} startIcon={<DeleteOutlineOutlinedIcon />}>
             Remove
         </Button>
-        <Button aria-label="add-to-readlist" onClick={()=>{addToList(book)}}>
-            <AddCircleOutlineOutlinedIcon />
-        </Button>
-        <Button aria-label="remove-from-readlist" onClick={()=>{removeOneFromList(book)}}>
-            <RemoveCircleOutlineOutlinedIcon />
-        </Button>
         {/* <IconButton>
             {(read === true) ?
                 <VisibilityOutlinedIcon aria-label="read" onClick={()=>{handleUnread()}}/>

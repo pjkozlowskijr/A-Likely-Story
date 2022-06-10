@@ -9,6 +9,7 @@ import AddRemoveListBook from './AddRemoveListBook';
 import ChangeBookQty from './ChangeBookQty';
 import { AppContext } from '../../context/AppContext';
 import { Grid } from '@mui/material';
+import { toTitleCase } from '../../helpers';
 
 export default function ListBook({book}) {
   const {readingList} = useContext(AppContext)
@@ -23,7 +24,7 @@ export default function ListBook({book}) {
   )
 
   return (
-    <Card sx={{display:'flex', width:'80%', margin:'auto'}}>
+    <Card sx={{display:'flex', width:'50%', margin:'auto'}}>
       <CardMedia
         component="img"
         sx={{width:'20%', height:'100%', objectFit:'contain', m:1}}
@@ -32,12 +33,12 @@ export default function ListBook({book}) {
       />
       <CardContent sx={{width:'60%'}}>
         <Typography variant="h2" textAlign='center'>
-          {book.title}
+          {toTitleCase(book.title)}
         </Typography>
         <Typography variant="h5" color="text.secondary" textAlign='center'>
           By: {book.author}
         </Typography>
-        <br/>
+        {/* <br/>
         <Divider/>
         <br/>
         <Typography variant="h6" color="text.secondary">
@@ -45,7 +46,7 @@ export default function ListBook({book}) {
         </Typography>
         <Typography variant="h6" color="text.secondary">
           <strong>Summary:</strong> {book.summary}
-        </Typography>
+        </Typography> */}
       </CardContent>
       <CardContent sx={{width:'20%'}}>
         <CardActions sx={{p:0, mt:1, justifyContent:'center'}} disableSpacing>
