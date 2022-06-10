@@ -4,12 +4,12 @@ import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
 import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
-import sortBooksAlpha from '../helpers'
+import {sortAlpha, toTitleCase} from '../helpers'
 
 export default function Playground() {
   const navigate = useNavigate()
   let {books} = useContext(AppContext)
-  books = books.sort(sortBooksAlpha)
+  books = books.sort(sortAlpha)
 
   const handleChange = (event, value) => {
     console.log(value)
@@ -21,7 +21,7 @@ export default function Playground() {
       <Autocomplete
         id="auto-complete"
         options={books}
-        getOptionLabel={option => ((option.title).toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' '))}
+        getOptionLabel={option => toTitleCase(option.title)}
         autoComplete
         autoHighlight
         includeInputInList

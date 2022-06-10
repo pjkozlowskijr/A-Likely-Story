@@ -18,6 +18,7 @@ import { AppContext } from '../context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import Autocomplete from './Autocomplete'
 import { Button } from '@mui/material';
+import { toTitleCase } from '../helpers';
 
 export default function BrowseAllBooks() {
   const {error, books} = useContext(AppContext)
@@ -62,7 +63,7 @@ export default function BrowseAllBooks() {
                 <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>
                   <CardHeader
                   title={
-                    (book.title).toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+                    toTitleCase(book.title)
                   }
                   subheader={'By: '+book.author}
                   sx={{p:0}}
