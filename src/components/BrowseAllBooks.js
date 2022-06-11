@@ -26,11 +26,12 @@ export default function BrowseAllBooks() {
 
   const handleAddToList = (book) => {
     addToList(book)
-    setAlert({msg:`You added ${toTitleCase(book.title)} to your reading list.`, cat:'primary'})
+    setAlert({msg:`You added "${toTitleCase(book.title)}" to your reading list.`, cat:'success'})
   }
 
   const handleRemoveOneFromList = (book) => {
     removeOneFromList(book)
+    setAlert({msg:`You removed "${toTitleCase(book.title)}" from your reading list.`, cat:'success'})
   }
 
   if (error){
@@ -52,13 +53,15 @@ export default function BrowseAllBooks() {
   return (
     <Grid container spacing={2}>
       <Grid item md={2}>
-        <Autocomplete/>
-        <FilterBooks/>
+        <Box sx={{position:'sticky', top:'15vh'}}>
+          <Autocomplete/>
+          <FilterBooks/>
+        </Box>
       </Grid>
       <Grid item md={10}>
         <Grid container spacing={2}>
           {books.map((book) => (
-            <Grid key={book.title} item md={3}>
+            <Grid key={book.title} item md={3} lg={4}>
               <Card key={book.title} sx={{height:'60vh', display:'flex', flexDirection:'column', justifyContent:'space-between', p:2}}>
                 <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>
                   <CardHeader
@@ -79,21 +82,15 @@ export default function BrowseAllBooks() {
                 <CardActions sx={{p:0}}>
                   <>
                   {(readingList.map(x=>x.id).includes(book.id)) ?
-                  <Button sx={{margin:'auto', width:'100%'}} variant='contained' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
-                    Remove From List
+                  <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='error' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
+                    Remove from List
                   </Button>
                     :
-                  <Button sx={{margin:'auto', width:'100%'}} variant='contained' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
-                    Add To List
+                  <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='primary' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
+                    Add to List
                   </Button>
                   }
                   </>
-                  {/* <IconButton aria-label="unread">
-                    <VisibilityOffOutlinedIcon />
-                  </IconButton>
-                  <IconButton aria-label="read">
-                    <VisibilityOutlinedIcon />
-                  </IconButton> */}
                 </CardActions>
               </Card>
             </Grid>

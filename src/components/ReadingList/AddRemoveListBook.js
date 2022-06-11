@@ -11,30 +11,13 @@ import { Button } from '@mui/material';
 import { List } from '@mui/material';
 
 export default function AddRemoveListBook({book}) {
-    const {addToList, removeOneFromList, removeBookFromList} = useContext(AppContext)
-
-    const [read, setRead] = useState(false)
-    
-    const handleRead = () => {
-        setRead(true)
-    }
-
-    const handleUnread = () => {
-        setRead(false)
-    }
+    const {removeBookFromList} = useContext(AppContext)
 
   return (
     <>
-        <Button aria-label="delete-all-from-readlist" variant='contained' onClick={()=>{removeBookFromList(book)}} startIcon={<DeleteOutlineOutlinedIcon />}>
+        <Button sx={{width:'50%'}} color='error' aria-label="delete-all-from-readlist" variant='contained' onClick={()=>{removeBookFromList(book)}} startIcon={<DeleteOutlineOutlinedIcon />}>
             Remove
         </Button>
-        {/* <IconButton>
-            {(read === true) ?
-                <VisibilityOutlinedIcon aria-label="read" onClick={()=>{handleUnread()}}/>
-                :
-                <VisibilityOffOutlinedIcon aria-label="unread" onClick={()=>{handleRead()}}/>
-            }
-        </IconButton> */}
     </>
   )
 }
