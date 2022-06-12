@@ -21,12 +21,17 @@ import { Button } from '@mui/material';
 import { toTitleCase } from '../helpers';
 
 export default function BrowseAllBooks() {
-  const {error, books, addToList, removeOneFromList, readingList, setAlert} = useContext(AppContext)
+  const {error, books, addToList, removeOneFromList, readingList, setAlert, user} = useContext(AppContext)
   const navigate = useNavigate()
 
   const handleAddToList = (book) => {
-    addToList(book)
-    setAlert({msg:`You added "${toTitleCase(book.title)}" to your reading list.`, cat:'success'})
+    if (user?.token){
+      addToList(book)
+      setAlert({msg:`You added "${toTitleCase(book.title)}" to your reading list.`, cat:'success'})
+    }else{
+      setAlert({msg:'Please log in to add books to your reading list.', cat:'error'})
+      navigate('/login')
+    }
   }
 
   const handleRemoveOneFromList = (book) => {

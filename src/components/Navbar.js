@@ -143,7 +143,7 @@ export default function PersistentDrawerLeft({children}) {
             {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>})
           ].map((navItem) => (
             <ListItem key={navItem.label} disablePadding>
-              <Link to={navItem.path} style={{textDecoration: 'none', color: 'inherit', width:'100%'}}>
+              <Link to={navItem.path} style={{textDecoration:'none', color:'inherit', width:'100%'}}>
                 <ListItemButton>
                   <ListItemIcon>
                     {navItem.icon}

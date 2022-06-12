@@ -39,7 +39,7 @@ function App() {
     <>
       <AlertPopUp/>
       <Navbar>
-        <Box sx={{minHeight:'90vh'}}>
+        <Box sx={{minHeight:'100%'}}>
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>

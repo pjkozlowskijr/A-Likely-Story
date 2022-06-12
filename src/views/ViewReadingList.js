@@ -4,14 +4,17 @@ import { AppContext } from '../context/AppContext'
 import ReadingList from '../components/ReadingList/ReadingList'
 import { Navigate } from 'react-router-dom'
 import { toTitleCase } from '../helpers'
+import Box from '@mui/material/Box'
 
 export default function ListPage() {
-    const {readingList, user} = useContext(AppContext)
+    const {readingList, user, setAlert} = useContext(AppContext)
 
     if (user.token){
         if (readingList.length < 1){
             return(
-                <Typography>There are no books in your reading list.</Typography>
+                <Box sx={{position:'absolute', top:'45%', left:0, right:0}}>
+                    <Typography variant='h2' sx={{textAlign:'center'}}>There are no books in your reading list.</Typography>
+                </Box>
             )
         }else{
             return(
@@ -22,6 +25,7 @@ export default function ListPage() {
             )
         }
     }else{
+        setAlert({msg:'Please log in to view your reading list.', cat:'error'})
         return(
             <Navigate to={'/login'}/>
         )

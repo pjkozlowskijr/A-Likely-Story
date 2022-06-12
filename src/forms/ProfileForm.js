@@ -6,6 +6,8 @@ import { TextField } from '@mui/material';
 import useEditUser from '../hooks/useEditUser';
 import useDeleteUser from '../hooks/useDeleteUser';
 import useCreateUser from '../hooks/useCreateUser';
+import { toTitleCase } from '../helpers';
+import {useNavigate} from 'react-router-dom'
 
 const FormSchema = Yup.object(
     {
@@ -21,14 +23,15 @@ export default function ProfileForm({user}){
     const [createUser, setCreateUser] = useState({})
     const [editUser, setEditUser] = useState({})
     const [deleteUser, setDeleteUser] = useState({})
+    const navigate = useNavigate()
 
     useCreateUser(createUser)
     useEditUser(editUser)
     useDeleteUser(deleteUser)
 
     const initialValues = {
-        first_name: user?.first_name ?? '',
-        last_name: user?.last_name ?? '',
+        first_name: (user?.first_name) ? toTitleCase(user?.first_name) : '',
+        last_name: (user?.last_name) ? toTitleCase(user?.last_name) : '',
         email: user?.email ?? '',
         password: '',
         confirm_pass: ''
@@ -37,10 +40,11 @@ export default function ProfileForm({user}){
     const handleSubmit = (values, resetForm) => {
         if (user?.token){
             setEditUser(values)
+            navigate('/')
         }else{
             setCreateUser(values)
+            navigate('/login')
         }
-        console.log(values)
         resetForm(initialValues)
     }
 
@@ -117,8 +121,11 @@ export default function ProfileForm({user}){
                 error = {formik.touched.confirm_pass && Boolean(formik.errors.confirm_pass)}
                 helperText = {formik.touched.confirm_pass && formik.errors.confirm_pass}
             />
-            <Button type='submit' sx={{width:'100%'}}>{user?.token ? 'Edit Profile' : 'Register'}</Button>
-            <Button color='error' onClick={() => {handleDelete()}} sx={{width:'100%'}}>Delete</Button>
+            <Button type='submit' sx={{width:'100%', fontWeight:'bold', mb:2}}>{user?.token ? 'Edit Profile' : 'Register'}</Button>
+            {user?.token ?
+            <Button color='error' onClick={() => {handleDelete()}} sx={{width:'100%', fontWeight:'bold'}}>Delete Profile</Button>
+            :
+            ''}
         </form>
     )
 }

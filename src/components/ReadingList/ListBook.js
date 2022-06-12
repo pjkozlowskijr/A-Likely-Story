@@ -35,7 +35,7 @@ export default function ListBook({book}) {
           alt={`Book cover for ${book.title}`}
           />
       </CardActionArea>
-      <CardContent sx={{width:'80%', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+      <CardContent sx={{width:'80%', display:'flex', flexDirection:'column', justifyContent:'space-between', p:1, '&:last-child':{pb:1}}}>
         <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>
           <Typography variant="h5" textAlign='center'>
             {toTitleCase(book.title)}

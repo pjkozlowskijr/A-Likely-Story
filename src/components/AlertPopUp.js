@@ -27,7 +27,7 @@ export default function AlertPopUp(){
 
     if(!alert?.msg) return <></>
     return(
-        <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Snackbar open={open} autoHideDuration={5000} onClose={handleClose} anchorOrigin={{vertical:'top', horizontal:'right'}}>
             <Alert onClose={handleClose} severity={alert.cat} sx={{width:'100%'}}>
                 {alert.msg}
             </Alert>
