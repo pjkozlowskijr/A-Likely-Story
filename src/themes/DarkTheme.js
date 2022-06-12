@@ -2,8 +2,8 @@ import { createTheme } from '@mui/material/styles'
 
 export const themeOptions = {
     palette: {
-      type: 'light',
-      mode: 'light',
+      type: 'dark',
+      mode: 'dark',
       primary: {
         main: '#2e5266',
       },
@@ -23,7 +23,8 @@ export const themeOptions = {
         main: '#659c43',
       },
       background: {
-        default: '#d3d0cb',
+        default: '#1a140f',
+        paper: '#424242'
       },
     },
     typography: {
@@ -43,7 +44,16 @@ export const themeOptions = {
         size: 'small',
       },
     },
-  };
+    components: {
+      MuiAppBar:{
+          styleOverrides:{
+              colorPrimary:{
+                  backgroundColor: '#6a3e37'
+              }
+          }
+      }
+    }
+  }
 
 const theme = createTheme(themeOptions);
 export default theme

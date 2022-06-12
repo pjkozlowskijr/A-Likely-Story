@@ -24,6 +24,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { Link } from 'react-router-dom';
 import {AppContext} from '../context/AppContext'
+import ThemeSwitch from './ThemeSwitch'
 
 const drawerWidth = 200;
 
@@ -122,7 +123,7 @@ export default function PersistentDrawerLeft({children}) {
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader sx={{backgroundColor:theme.palette.background.default}}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -143,9 +144,9 @@ export default function PersistentDrawerLeft({children}) {
             {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>})
           ].map((navItem) => (
             <ListItem key={navItem.label} disablePadding>
-              <Link to={navItem.path} style={{textDecoration:'none', color:'inherit', width:'100%'}}>
+              <Link to={navItem.path} style={{textDecoration:'none', color:theme.palette.text.secondary, width:'100%'}}>
                 <ListItemButton>
-                  <ListItemIcon>
+                  <ListItemIcon sx={{color:theme.palette.text.secondary}}>
                     {navItem.icon}
                   </ListItemIcon>
                   <ListItemText primary={navItem.label} />
@@ -154,6 +155,9 @@ export default function PersistentDrawerLeft({children}) {
             </ListItem>
           ))}
         </List>
+        <ListItem sx={{position:'absolute', bottom:'0', justifyContent:'center'}}>
+          <ThemeSwitch/>
+        </ListItem>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

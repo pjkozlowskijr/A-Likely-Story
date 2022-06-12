@@ -87,7 +87,7 @@ export default function BrowseAllBooks() {
                 <CardActions sx={{p:0}}>
                   <>
                   {(readingList.map(x=>x.id).includes(book.id)) ?
-                  <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='error' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
+                  <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='secondary' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
                     Remove from List
                   </Button>
                     :

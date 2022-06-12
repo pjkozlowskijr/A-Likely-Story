@@ -4,8 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
-import lightTheme from './themes/LightTheme'
+import CustomThemeProvider from './context/ThemeContext';
 import AppContextProvider from './context/AppContext';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -13,12 +12,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={lightTheme}>
+      <CustomThemeProvider>
         <AppContextProvider>
           <CssBaseline/>
           <App />
         </AppContextProvider>
-      </ThemeProvider>
+      </CustomThemeProvider>
     </BrowserRouter>
   // </React.StrictMode>
 );

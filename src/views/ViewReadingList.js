@@ -13,7 +13,7 @@ export default function ListPage() {
         if (readingList.length < 1){
             return(
                 <Box sx={{position:'absolute', top:'45%', left:0, right:0}}>
-                    <Typography variant='h2' sx={{textAlign:'center'}}>There are no books in your reading list.</Typography>
+                    <Typography variant='h2' sx={{textAlign:'center'}}>Your reading list is currently empty.</Typography>
                 </Box>
             )
         }else{

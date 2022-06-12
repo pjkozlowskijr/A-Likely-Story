@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useContext} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -15,10 +15,31 @@ import useBooks from '../hooks/useBooks';
 import { Box } from '@mui/system';
 import Error from './Error';
 import { CircularProgress } from '@mui/material';
+import { AppContext } from '../context/AppContext';
+import Button from '@mui/material/Button';
+import { toTitleCase } from '../helpers';
+import {useNavigate} from 'react-router-dom'
 
 export default function SingleBook() {
   const {bookId} = useParams()
   const {book, error} = useBooks(bookId)
+  const {readingList, user, addToList, removeOneFromList, setAlert} = useContext(AppContext)
+  const navigate = useNavigate()
+
+  const handleAddToList = (book) => {
+    if (user?.token){
+      addToList(book)
+      setAlert({msg:`You added "${toTitleCase(book.title)}" to your reading list.`, cat:'success'})
+    }else{
+      setAlert({msg:'Please log in to add books to your reading list.', cat:'error'})
+      navigate('/login')
+    }
+  }
+
+  const handleRemoveOneFromList = (book) => {
+    removeOneFromList(book)
+    setAlert({msg:`You removed "${toTitleCase(book.title)}" from your reading list.`, cat:'success'})
+  }
 
   if (error){
     return(
@@ -37,37 +58,37 @@ export default function SingleBook() {
   }
 
   return (
-    <Card sx={{display:'flex', width:'80%', margin:'auto'}}>
+    <Card sx={{display:'flex', width:'70%', margin:'auto', p:1, mt:3}}>
       <CardMedia
         component="img"
-        sx={{width:'30%', height:500, objectFit:'contain', m:1}}
+        sx={{width:'30%', height:400, objectFit:'contain', m:1, my:'auto'}}
         image={book.img}
         alt={`Book cover for ${book.title}`}
       />
       <CardContent sx={{width:'70%'}}>
-        <Typography variant="h2" textAlign='center'>
-          {book.title}
+        <Typography variant="h3" textAlign='center' sx={{mb:3}}>
+          {toTitleCase(book.title)}
         </Typography>
-        <Typography variant="h5" color="text.secondary" textAlign='center'>
+        <Typography variant="h5" color="text.secondary" textAlign='center' sx={{mb:3}}>
           By: {book.author}
         </Typography>
         <CardActions sx={{p:0, mt:1, justifyContent:'center'}} disableSpacing>
-            <IconButton aria-label="add-to-readlist">
-              <AddCircleOutlineOutlinedIcon />
-            </IconButton>
-            <IconButton aria-label="remove-from-readlist">
-              <RemoveCircleOutlineOutlinedIcon />
-            </IconButton>
-            <IconButton aria-label="unread">
-              <VisibilityOffOutlinedIcon />
-            </IconButton>
-            <IconButton aria-label="read">
-              <VisibilityOutlinedIcon />
-            </IconButton>
+          {(readingList.map(x=>x.id).includes(book.id)) ?
+          <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='error' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
+            Remove from List
+          </Button>
+            :
+          <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='primary' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
+            Add to List
+          </Button>
+          }
         </CardActions>
         <br/>
         <Divider/>
         <br/>
+        <Typography variant="h6" color="text.secondary">
+          <strong>Subject:</strong> {toTitleCase(book.subject)}
+        </Typography>
         <Typography variant="h6" color="text.secondary">
           <strong>Pages:</strong> {book.pages}
         </Typography>
