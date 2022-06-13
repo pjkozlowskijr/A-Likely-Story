@@ -1,12 +1,10 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import Grid from '@mui/material/Grid';
 import { CardMedia, Typography } from '@mui/material';
 import { CardActionArea } from '@mui/material';
@@ -21,7 +19,9 @@ import { Button } from '@mui/material';
 import { toTitleCase } from '../helpers';
 
 export default function BrowseAllBooks() {
-  const {error, books, addToList, removeOneFromList, readingList, setAlert, user} = useContext(AppContext)
+  const {error, addToList, removeOneFromList, readingList, setAlert, user} = useContext(AppContext)
+  let {books} = useContext(AppContext)
+  const [displayBooks, setDisplayBooks] = useState(books)
   const navigate = useNavigate()
 
   const handleAddToList = (book) => {
@@ -38,6 +38,18 @@ export default function BrowseAllBooks() {
     removeOneFromList(book)
     setAlert({msg:`You removed "${toTitleCase(book.title)}" from your reading list.`, cat:'success'})
   }
+
+  const [filters, setFilters] = useState([])
+
+  const handleFilters = (filters) => {
+    setFilters(filters)
+  }
+
+  useEffect(
+    ()=>{
+      setDisplayBooks((filters.length < 1) ? books : books.filter(book => filters.includes(book.subject)))
+    },[filters, books]
+  )
 
   if (error){
     return(
@@ -60,12 +72,12 @@ export default function BrowseAllBooks() {
       <Grid item md={2}>
         <Box sx={{position:'sticky', top:'15vh'}}>
           <Autocomplete/>
-          <FilterBooks/>
+          <FilterBooks handleFilters={filters => handleFilters(filters)}/>
         </Box>
       </Grid>
       <Grid item md={10}>
         <Grid container spacing={2}>
-          {books.map((book) => (
+          {displayBooks?.map((book) => (
             <Grid key={book.title} item md={3} lg={4}>
               <Card key={book.title} sx={{height:'60vh', display:'flex', flexDirection:'column', justifyContent:'space-between', p:2}}>
                 <CardActionArea onClick={()=>{navigate('/book/'+book.id)}}>

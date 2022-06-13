@@ -54,7 +54,7 @@ const AppContextProvider = ({children}) => {
         user, 
         setUser, 
         books,
-        bookSubs, 
+        bookSubs,
         error, 
         readingList,
         addToList: (book)=>{

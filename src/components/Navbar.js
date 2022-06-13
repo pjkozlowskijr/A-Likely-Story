@@ -134,11 +134,11 @@ export default function PersistentDrawerLeft({children}) {
           [
             {label: 'Browse', path: '/browse', icon: <SearchOutlinedIcon/>}, 
             {label: 'Reading List', path: '/list', icon: <MenuBookOutlinedIcon/>},
-            ((user.token)?
+            ((user?.token)?
             {label: 'Logout', path: '/logout', icon: <LogoutOutlinedIcon/>}
             :
             {label: 'Login', path: '/login', icon: <LoginOutlinedIcon/>}),
-            ((user.token)?
+            ((user?.token)?
             {label: 'Account', path: '/profile', icon: <AccountCircleOutlinedIcon/>}
             :
             {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>})

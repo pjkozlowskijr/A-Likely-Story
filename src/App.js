@@ -2,7 +2,6 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Rating from './components/Rating';
 import Autocomplete from './components/Autocomplete';
-import BookCard from './components/BookCard';
 import LoginForm from './forms/LoginForm';
 import ProfileForm from './forms/ProfileForm';
 import Button from './components/Button';
