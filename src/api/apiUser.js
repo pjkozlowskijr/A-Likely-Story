@@ -41,9 +41,6 @@ const get = async (email, password, cancelToken) => {
 }
 
 const put = async (token, data, cancelToken) => {
-    let error;
-    let user;
-
     const response = await apiClientTokenAuth(token, cancelToken).put(endpointPPD, data);
     return response.ok
 }
@@ -53,9 +50,10 @@ const del = async (token, cancelToken) => {
     return response.ok
 }
 
-export default {
+const apis = {
     post,
     get,
     put,
     del
 }
+export default apis

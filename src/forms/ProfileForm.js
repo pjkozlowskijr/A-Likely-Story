@@ -2,7 +2,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { toTitleCase } from '../helpers';
 import useCreateUser from '../hooks/useCreateUser';
@@ -27,7 +26,6 @@ export default function ProfileForm({user}){
     const [createUser, setCreateUser] = useState({})
     const [editUser, setEditUser] = useState({})
     const [deleteUser, setDeleteUser] = useState({})
-    const navigate = useNavigate()
 
     useCreateUser(createUser)
     useEditUser(editUser)
@@ -44,10 +42,8 @@ export default function ProfileForm({user}){
     const handleSubmit = (values, resetForm) => {
         if (user?.token){
             setEditUser(values)
-            navigate('/')
         }else{
             setCreateUser(values)
-            navigate('/login')
         }
         resetForm(initialValues)
     }

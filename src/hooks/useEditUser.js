@@ -2,6 +2,7 @@ import {useContext, useEffect} from 'react'
 import apiUser from '../api/apiUser';
 import { CancelToken } from 'apisauce';
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 // ##############################################################
 // API hook to edit user
@@ -9,6 +10,7 @@ import { AppContext } from '../context/AppContext';
 
 export default function useEditUser(data) {
     const {user, setAlert} = useContext(AppContext)
+    const navigate = useNavigate()
     useEffect(
         () => {
             let response
@@ -22,9 +24,10 @@ export default function useEditUser(data) {
                        setAlert({msg:'An unexpected error occured.', cat:'error'})
                    }
                 })()
+                navigate('/')
             }
             return () => {source.cancel()}
         },
-        [user?.token, user?.user_id, data, setAlert]
+        [user?.token, user?.user_id, data, setAlert, navigate]
     )
 }
