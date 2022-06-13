@@ -8,14 +8,14 @@ import React from 'react'
 // Homepage
 // ##############################################################
 
-export default function Home({theme}) {
+export default function Home() {
   return (
     <Card sx={{maxWidth:'80vw', m:'auto', mt:2}}>
       <CardContent>
-        <Typography sx={{textAlign:'center'}}gutterBottom variant="h4">
+        <Typography sx={{mb:2}} variant="h4">
           "The books that the world calls immoral are the books that show the world its own shame."
         </Typography>
-        <Typography sx={{textAlign:'center', color:'rgba(0, 0, 0, 0.54)'}}gutterBottom variant="h4">
+        <Typography sx={{textAlign:'center'}} variant="h4">
           - Oscar Wilde
         </Typography>
       </CardContent>
@@ -23,7 +23,7 @@ export default function Home({theme}) {
         component="img"
         alt="Ban bigots, not books"
         sx={{objectFit:'contain', width:'100%'}}
-        image="https://res.cloudinary.com/detcvmtip/image/upload/v1655134007/bannedbooksweek_gmle6f.png"
+        image="https://res.cloudinary.com/detcvmtip/image/upload/v1655145840/bookstore/bannedbooksweek_wr2txs.png"
       />
     </Card>
   )
