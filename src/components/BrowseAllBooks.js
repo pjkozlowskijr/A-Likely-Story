@@ -55,7 +55,7 @@ export default function BrowseAllBooks() {
 
   useEffect(
     ()=>{
-      setDisplayBooks((sorting === 'Title Z-A') ? books?.sort(sortTitleReverseAlpha) : books)
+      setDisplayBooks((sorting === 'Title A-Z') ? books?.sort(sortTitleReverseAlpha) : books)
     },[sorting, books]
   )
 
@@ -95,7 +95,7 @@ export default function BrowseAllBooks() {
         <Box sx={{position:'sticky', top:'12vh'}}>
           <Typography variant='h6' sx={{fontWeight:'bold'}}>Search/Sort/Filter</Typography>
           <Autocomplete/>
-          <SortBooks handleSorting={sorting => handleSorting(sorting)}/>
+          <SortBooks handleSorting={handleSorting}/>
           <FilterBooks handleFilters={filters => handleFilters(filters)}/>
         </Box>
       </Grid>

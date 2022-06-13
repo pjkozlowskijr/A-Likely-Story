@@ -12,7 +12,7 @@ export default function AddRemoveListBook({book}) {
 
   return (
     <>
-        <Button sx={{width:'50%'}} color='error' aria-label="delete-all-from-readlist" variant='contained' onClick={()=>{removeBookFromList(book)}} startIcon={<DeleteOutlineOutlinedIcon />}>
+        <Button sx={{width:'50%'}} color='secondary' aria-label="delete-all-from-readlist" variant='contained' onClick={()=>{removeBookFromList(book)}} startIcon={<DeleteOutlineOutlinedIcon />}>
             Remove
         </Button>
     </>

@@ -3,19 +3,24 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // ##############################################################
 // Component to sort books alpha by title in book browser
 // ##############################################################
 
-export default function FilterBooks(props) {
+export default function SortBooks({handleSorting}) {
   const [sortBy, setSortBy] = useState('Title A-Z');
 
   const handleChange = (event) => {
     setSortBy(event.target.value)
-    props.handleSorting(sortBy)
   };
+
+  useEffect(
+    ()=>{
+      handleSorting(sortBy)
+    },[sortBy, handleSorting]
+  )
 
   return (
     <FormControl sx={{mb:2}}>

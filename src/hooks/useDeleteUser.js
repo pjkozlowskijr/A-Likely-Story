@@ -21,11 +21,11 @@ export default function useDeleteUser(delUser){
                     if (response){
                         setAlert({msg:`User ${user.user_id} deleted`, cat:'success'})
                         localStorage.clear()
+                        navigate('/logout')
                     }else if (response === false && response !== undefined){
                         setAlert({msg:'An unexpected error occured.', cat:'error'})
                     }
                 })()
-                navigate('/')
             }
             return () => {source.cancel()}
         },

@@ -25,6 +25,7 @@ export default function FilterBooks(props) {
     }
     setFilterValues(newFilterValues)
     props.handleFilters(newFilterValues)
+    console.log(newFilterValues)
   };
 
   return (
