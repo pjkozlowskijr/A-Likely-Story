@@ -1,5 +1,10 @@
 import lightTheme from './LightTheme'
 import darkTheme from './DarkTheme'
+
+// ##############################################################
+// Theme base for light/dark themes
+// ##############################################################
+
 const themes={
     lightTheme,
     darkTheme

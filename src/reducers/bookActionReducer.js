@@ -1,3 +1,7 @@
+// ##############################################################
+// Reducer for all reading list actions (add, remove, etc.)
+// ##############################################################
+
 const listActions = {
     addToList: 'addToList',
     addMultipleToList: 'addMultipleToList',

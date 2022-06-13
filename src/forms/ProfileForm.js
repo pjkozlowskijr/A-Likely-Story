@@ -49,7 +49,6 @@ export default function ProfileForm({user}){
             setCreateUser(values)
             navigate('/login')
         }
-        console.log(values)
         resetForm(initialValues)
     }
 

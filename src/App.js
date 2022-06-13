@@ -1,30 +1,17 @@
+import Box from '@mui/material/Box';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AlertPopUp from './components/AlertPopUp';
 import Navbar from './components/Navbar';
-import Autocomplete from './components/Autocomplete';
-import LoginForm from './forms/LoginForm';
-import ProfileForm from './forms/ProfileForm';
-import { CancelToken } from 'apisauce';
-import apiUser from './api/apiUser'
-import apiBook from './api/apiBook'
-import BrowseAllBooks from './components/BrowseAllBooks'
-import SingleBook from './components/SingleBook'
-import FilterBooks from './components/FilterBooks'
-import { useContext } from 'react';
-import { AppContext } from './context/AppContext';
-import ReadingList from './components/ReadingList/ReadingList'
-import ViewReadingList from './views/ViewReadingList';
-import Box from '@mui/material/Box'
-import {Route, Routes} from 'react-router-dom'
+import BrowseBooks from './views/BrowseBooks';
 import Home from './views/Home';
 import Login from './views/Login';
 import Logout from './views/Logout';
-import BrowseBooks from './views/BrowseBooks'
 import Profile from './views/Profile';
 import ViewBook from './views/ViewBook';
-import AlertPopUp from './components/AlertPopUp'
+import ViewReadingList from './views/ViewReadingList';
 
 function App() {
-  const {user} = useContext(AppContext)
   return (
     <>
       <AlertPopUp/>

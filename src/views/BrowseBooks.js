@@ -1,6 +1,10 @@
 import React from 'react'
+import Typography from '@mui/material/Typography'
 import BrowseAllBooks from '../components/BrowseAllBooks'
-import {Box, Typography} from '@mui/material'
+
+// ##############################################################
+// View to browse all books
+// ##############################################################
 
 export default function BrowseBooks() {
   return (

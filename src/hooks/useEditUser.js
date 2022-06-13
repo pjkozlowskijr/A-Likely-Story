@@ -3,8 +3,12 @@ import apiUser from '../api/apiUser';
 import { CancelToken } from 'apisauce';
 import { AppContext } from '../context/AppContext';
 
+// ##############################################################
+// API hook to edit user
+// ##############################################################
+
 export default function useEditUser(data) {
-    const {user} = useContext(AppContext)
+    const {user, setAlert} = useContext(AppContext)
     useEffect(
         () => {
             let response
@@ -13,14 +17,14 @@ export default function useEditUser(data) {
                 (async () => {
                    response = await apiUser.put(user.token, data, source.token)
                    if (response){
-                       console.log(`User ID ${user.user_id} edited.`)
+                       setAlert({msg:`User ID ${user.user_id} edited.`, cat:'success'})
                    }else{
-                       console.log('An unexpected error occured.')
+                       setAlert({msg:'An unexpected error occured.', cat:'error'})
                    }
                 })()
             }
             return () => {source.cancel()}
         },
-        [user?.token, user?.user_id, data]
+        [user?.token, user?.user_id, data, setAlert]
     )
 }

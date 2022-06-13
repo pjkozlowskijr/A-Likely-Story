@@ -16,7 +16,6 @@ export default function Playground() {
   books = books.sort(sortTitleAlpha)
 
   const handleChange = (event, value) => {
-    console.log(value)
     navigate('/book/'+value.id)
   }
 

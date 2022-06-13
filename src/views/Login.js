@@ -1,6 +1,11 @@
 import React from 'react'
 import LoginForm from '../forms/LoginForm'
-import { Paper, Typography } from '@mui/material'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+
+// ##############################################################
+// Login page
+// ##############################################################
 
 export default function Login() {
   return (

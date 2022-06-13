@@ -106,7 +106,7 @@ export default function PersistentDrawerLeft({children}) {
           </IconButton>
           <Box sx={{mr:3}}>
             <Link to='/'>
-              <img height="40px" src="https://res.cloudinary.com/detcvmtip/image/upload/v1653446968/bookstore/books_mbq6mq.png" alt="Books"/>
+              <img height="40px" style={{verticalAlign:'top'}}src="https://res.cloudinary.com/detcvmtip/image/upload/v1655136951/bookstore/android-chrome-192x192_j0er7h.png" alt="Books"/>
             </Link>
           </Box>
           <Typography variant="h6" noWrap component="div">

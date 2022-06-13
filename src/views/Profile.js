@@ -1,7 +1,12 @@
-import React, { useContext } from 'react'
-import { Paper, Typography } from '@mui/material'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import { useContext } from 'react'
 import { AppContext } from '../context/AppContext'
 import ProfileForm from '../forms/ProfileForm'
+
+// ##############################################################
+// Register OR edit profile (determined by user token)
+// ##############################################################
 
 export default function Profile() {
     const {user} = useContext(AppContext)

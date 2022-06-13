@@ -1,10 +1,16 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import apiUser from '../api/apiUser';
 import { CancelToken } from 'apisauce';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
+
+// ##############################################################
+// API hook to login and get bearer token
+// ##############################################################
 
 export default function useLogin(loginCreds, setLoginCreds, setError, setUser) {
     const navigate = useNavigate()
+    const {setAlert} = useContext(AppContext)
 
     useEffect(
         () => {
@@ -12,9 +18,8 @@ export default function useLogin(loginCreds, setLoginCreds, setError, setUser) {
             if (loginCreds.email && loginCreds.password){                
                 const login = async (cancelToken) => {
                     const response = await apiUser.get(loginCreds.email, loginCreds.password, cancelToken)
-                    console.log(response)
                     if (response.user?.token){
-                        console.log('Logged in')
+                        setAlert({msg: 'You are now logged in!', cat:'success'})
                         setUser(response.user)
                         setLoginCreds({})
                         navigate('/')
@@ -25,6 +30,6 @@ export default function useLogin(loginCreds, setLoginCreds, setError, setUser) {
             }
             return () => {source.cancel()}
         },
-        [loginCreds, setLoginCreds, setError, setUser, navigate]
+        [loginCreds, setLoginCreds, setError, setUser, navigate, setAlert]
     )
 }

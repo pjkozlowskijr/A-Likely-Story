@@ -1,10 +1,14 @@
-import { Typography } from '@mui/material'
-import React, { useContext } from 'react'
-import { AppContext } from '../context/AppContext'
-import ReadingList from '../components/ReadingList/ReadingList'
-import { Navigate } from 'react-router-dom'
-import { toTitleCase } from '../helpers'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { Navigate } from 'react-router-dom'
+import ReadingList from '../components/ReadingList/ReadingList'
+import { useContext } from 'react'
+import { AppContext } from '../context/AppContext'
+import { toTitleCase } from '../helpers'
+
+// ##############################################################
+// View user's reading list
+// ##############################################################
 
 export default function ListPage() {
     const {readingList, user, setAlert} = useContext(AppContext)

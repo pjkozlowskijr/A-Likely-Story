@@ -15,7 +15,6 @@ export default function FilterBooks(props) {
   const handleChange = (event) => {
     setSortBy(event.target.value)
     props.handleSorting(sortBy)
-    console.log(sortBy)
   };
 
   return (

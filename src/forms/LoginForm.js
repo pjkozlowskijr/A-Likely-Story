@@ -29,7 +29,6 @@ export default function LoginForm(){
     useLogin(loginCreds, setLoginCreds, setError, setUser)
 
     const handleSubmit = (values) => {
-        console.log(values)
         setLoginCreds(values)
     }
 

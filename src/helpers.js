@@ -1,6 +1,8 @@
-// HELPER FUNCTIONS
+// ##############################################################
+// Helper functions
+// ##############################################################
 
-// Sort books alphabetically
+// Sort books alphabetically by title
 export function sortTitleAlpha(a, b){
     if (a.title.toUpperCase()<b.title.toUpperCase()){
       return -1
@@ -11,6 +13,7 @@ export function sortTitleAlpha(a, b){
     }
   }
 
+// Sort books reverse alpha by title
 export function sortTitleReverseAlpha(a, b){
     if (a.title.toUpperCase()>b.title.toUpperCase()){
       return -1
@@ -21,6 +24,7 @@ export function sortTitleReverseAlpha(a, b){
     }
   }
 
+// Sort array alphabetically
 export function sortAlpha(a, b){
   if (a.toUpperCase()<b.toUpperCase()){
     return -1
