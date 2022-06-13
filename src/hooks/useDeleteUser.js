@@ -2,6 +2,7 @@ import {useContext, useEffect} from 'react';
 import { CancelToken } from 'apisauce';
 import apiUser from '../api/apiUser';
 import { AppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 // ##############################################################
 // API hook to delete user
@@ -9,6 +10,7 @@ import { AppContext } from '../context/AppContext';
 
 export default function useDeleteUser(delUser){
     const {user, setAlert} = useContext(AppContext)
+    const navigate = useNavigate()
     useEffect(
         () => {
             let response
@@ -23,9 +25,10 @@ export default function useDeleteUser(delUser){
                         setAlert({msg:'An unexpected error occured.', cat:'error'})
                     }
                 })()
+                navigate('/')
             }
             return () => {source.cancel()}
         },
-        [user?.token, delUser, user?.user_id, setAlert]
+        [user?.token, delUser, user?.user_id, setAlert, navigate]
     )
 }
