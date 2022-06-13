@@ -1,15 +1,12 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import Rating from './components/Rating';
 import Autocomplete from './components/Autocomplete';
 import LoginForm from './forms/LoginForm';
 import ProfileForm from './forms/ProfileForm';
-import Button from './components/Button';
 import { CancelToken } from 'apisauce';
 import apiUser from './api/apiUser'
 import apiBook from './api/apiBook'
 import BrowseAllBooks from './components/BrowseAllBooks'
-import UserBooks from './components/UserBooks'
 import SingleBook from './components/SingleBook'
 import FilterBooks from './components/FilterBooks'
 import { useContext } from 'react';
@@ -25,12 +22,6 @@ import BrowseBooks from './views/BrowseBooks'
 import Profile from './views/Profile';
 import ViewBook from './views/ViewBook';
 import AlertPopUp from './components/AlertPopUp'
-
-// const handleAPITest = async () => {
-//   const source = CancelToken.source();
-//   const responseObject = await apiUser.put(myToken, patrick, source.token)
-//   console.log(responseObject)
-// }
 
 function App() {
   const {user} = useContext(AppContext)

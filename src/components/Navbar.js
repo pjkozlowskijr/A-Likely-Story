@@ -1,30 +1,34 @@
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import MuiAppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
-import AppRegistrationOutlinedIcon from '@mui/icons-material/AppRegistrationOutlined';
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import { styled, useTheme } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {AppContext} from '../context/AppContext'
-import ThemeSwitch from './ThemeSwitch'
+import { AppContext } from '../context/AppContext';
+import ThemeSwitch from './ThemeSwitch';
+
+// ##############################################################
+// Navbar (also outer container for all viewed components)
+// ##############################################################
 
 const drawerWidth = 200;
 
@@ -75,8 +79,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft({children}) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-  const {user} = React.useContext(AppContext)
+  const [open, setOpen] = useState(false);
+  const {user} = useContext(AppContext)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -130,18 +134,17 @@ export default function PersistentDrawerLeft({children}) {
         </DrawerHeader>
         <Divider />
         <List>
-          {
-          [
+          {[
             {label: 'Browse', path: '/browse', icon: <SearchOutlinedIcon/>}, 
             {label: 'Reading List', path: '/list', icon: <MenuBookOutlinedIcon/>},
             ((user?.token)?
-            {label: 'Logout', path: '/logout', icon: <LogoutOutlinedIcon/>}
-            :
-            {label: 'Login', path: '/login', icon: <LoginOutlinedIcon/>}),
+              {label: 'Logout', path: '/logout', icon: <LogoutOutlinedIcon/>}
+              :
+              {label: 'Login', path: '/login', icon: <LoginOutlinedIcon/>}),
             ((user?.token)?
-            {label: 'Account', path: '/profile', icon: <AccountCircleOutlinedIcon/>}
-            :
-            {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>})
+              {label: 'Account', path: '/profile', icon: <AccountCircleOutlinedIcon/>}
+              :
+              {label: 'Register', path: '/profile', icon: <AppRegistrationOutlinedIcon/>})
           ].map((navItem) => (
             <ListItem key={navItem.label} disablePadding>
               <Link to={navItem.path} style={{textDecoration:'none', color:theme.palette.text.secondary, width:'100%'}}>
@@ -161,7 +164,7 @@ export default function PersistentDrawerLeft({children}) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-            {children}
+          {children}
       </Main>
     </Box>
   );

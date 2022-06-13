@@ -1,7 +1,10 @@
-import {useContext, useEffect, useState} from 'react';
+import { CancelToken } from 'apisauce';
+import { useEffect, useState } from 'react';
 import apiBook from '../api/apiBook';
-import {CancelToken} from 'apisauce';
-import { AppContext } from '../context/AppContext';
+
+// ##############################################################
+// API hook to get all books or single if ID provided
+// ##############################################################
 
 export default function useBooks(bookId=null){
     const [books, setBooks] = useState ({});

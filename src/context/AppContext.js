@@ -1,7 +1,11 @@
-import {createContext, useEffect, useReducer, useState} from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
+import { sortAlpha, sortTitleAlpha } from '../helpers';
 import useBooks from '../hooks/useBooks';
 import { bookActionReducer, listActions } from '../reducers/bookActionReducer';
-import {sortTitleAlpha, sortAlpha} from '../helpers'
+
+// ##############################################################
+// App context
+// ##############################################################
 
 export const AppContext = createContext();
 

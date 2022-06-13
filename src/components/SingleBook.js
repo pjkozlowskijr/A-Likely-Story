@@ -1,24 +1,24 @@
-import React, {useContext} from 'react';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import CircularProgress from '@mui/material/CircularProgress';
 import Divider from '@mui/material/Divider';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import { useParams } from 'react-router-dom';
-import useBooks from '../hooks/useBooks';
-import { Box } from '@mui/system';
-import Error from './Error';
-import { CircularProgress } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
-import Button from '@mui/material/Button';
 import { toTitleCase } from '../helpers';
-import {useNavigate} from 'react-router-dom'
+import useBooks from '../hooks/useBooks';
+import Error from './Error';
+
+// ##############################################################
+// Component to view a single book's details
+// ##############################################################
 
 export default function SingleBook() {
   const {bookId} = useParams()
@@ -74,13 +74,27 @@ export default function SingleBook() {
         </Typography>
         <CardActions sx={{p:0, mt:1, justifyContent:'center'}} disableSpacing>
           {(readingList.map(x=>x.id).includes(book.id)) ?
-          <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='error' aria-label="remove-from-readlist" onClick={()=>{handleRemoveOneFromList(book)}} startIcon={<RemoveCircleOutlineOutlinedIcon/>}>
-            Remove from List
-          </Button>
+            <Button 
+              sx={{margin:'auto', width:'75%'}} 
+              variant='contained' 
+              color='error' 
+              aria-label="remove-from-readlist" 
+              onClick={()=>{handleRemoveOneFromList(book)}} 
+              startIcon={<RemoveCircleOutlineOutlinedIcon/>}
+            >
+              Remove from List
+            </Button>
             :
-          <Button sx={{margin:'auto', width:'75%'}} variant='contained' color='primary' aria-label="add-to-readlist" onClick={()=>{handleAddToList(book)}} startIcon={<AddCircleOutlineOutlinedIcon />}>
-            Add to List
-          </Button>
+            <Button 
+              sx={{margin:'auto', width:'75%'}} 
+              variant='contained' 
+              color='primary' 
+              aria-label="add-to-readlist" 
+              onClick={()=>{handleAddToList(book)}} 
+              startIcon={<AddCircleOutlineOutlinedIcon />}
+            >
+              Add to List
+            </Button>
           }
         </CardActions>
         <br/>

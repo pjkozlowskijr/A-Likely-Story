@@ -1,9 +1,13 @@
-import React, {useContext} from 'react';
-import { styled } from '@mui/material/styles';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
-import {ThemeContext} from '../context/ThemeContext';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
+
+// ##############################################################
+// Switch for light/dark theme
+// ##############################################################
 
 const MaterialUISwitch = styled(Switch)(({theme}) => ({
   width: 62,

@@ -1,6 +1,10 @@
-import {useState, createContext} from 'react';
 import { ThemeProvider } from '@mui/material/styles';
+import { createContext, useState } from 'react';
 import getTheme from '../themes/base';
+
+// ##############################################################
+// Theme context
+// ##############################################################
 
 export const ThemeContext = createContext({
     currentTheme: 'lightTheme',

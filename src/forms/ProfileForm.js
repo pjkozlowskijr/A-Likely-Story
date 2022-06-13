@@ -1,13 +1,17 @@
-import {useState} from 'react';
-import * as Yup from 'yup';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
-import Button from '../components/Button';
-import { TextField } from '@mui/material';
-import useEditUser from '../hooks/useEditUser';
-import useDeleteUser from '../hooks/useDeleteUser';
-import useCreateUser from '../hooks/useCreateUser';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
 import { toTitleCase } from '../helpers';
-import {useNavigate} from 'react-router-dom'
+import useCreateUser from '../hooks/useCreateUser';
+import useDeleteUser from '../hooks/useDeleteUser';
+import useEditUser from '../hooks/useEditUser';
+
+// ##############################################################
+// Profile form (registering & editing account)
+// ##############################################################
 
 const FormSchema = Yup.object(
     {
@@ -122,11 +126,25 @@ export default function ProfileForm({user}){
                 error = {formik.touched.confirm_pass && Boolean(formik.errors.confirm_pass)}
                 helperText = {formik.touched.confirm_pass && formik.errors.confirm_pass}
             />
-            <Button type='submit' sx={{width:'100%', fontWeight:'bold', mb:2}}>{user?.token ? 'Edit Profile' : 'Register'}</Button>
+            <Button 
+                type='submit' 
+                sx={{width:'100%', fontWeight:'bold', mb:2}} 
+                variant='contained'
+            >
+                {user?.token ? 'Edit Profile' : 'Register'}
+            </Button>
             {user?.token ?
-            <Button color='error' onClick={() => {handleDelete()}} sx={{width:'100%', fontWeight:'bold'}}>Delete Profile</Button>
-            :
-            ''}
+                <Button 
+                    color='error' 
+                    onClick={() => {handleDelete()}} 
+                    sx={{width:'100%', fontWeight:'bold'}} 
+                    variant='contained'
+                >
+                    Delete Profile
+                </Button>
+                :
+                ''
+            }
         </form>
     )
 }

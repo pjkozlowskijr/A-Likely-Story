@@ -1,11 +1,15 @@
-import {useContext, useState} from 'react';
 import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
 import FormLabel from '@mui/material/FormLabel';
+import { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { toTitleCase, sortAlpha } from '../helpers';
+import { toTitleCase } from '../helpers';
+
+// ##############################################################
+// Component to filter books by subject in book browser
+// ##############################################################
 
 export default function FilterBooks(props) {
   const {bookSubs} = useContext(AppContext)
@@ -25,7 +29,7 @@ export default function FilterBooks(props) {
 
   return (
     <FormControl>
-      <FormLabel id="subject-filter">Filter Subject</FormLabel>
+      <FormLabel id="subject-filter">Filter Subject:</FormLabel>
       <FormGroup
         aria-labelledby="subject-filter"
         name="subject-filter"

@@ -11,6 +11,16 @@ export function sortTitleAlpha(a, b){
     }
   }
 
+export function sortTitleReverseAlpha(a, b){
+    if (a.title.toUpperCase()>b.title.toUpperCase()){
+      return -1
+    }else if (a.title.toUpperCase()<b.title.toUpperCase()){
+      return 1
+    }else{
+      return 0
+    }
+  }
+
 export function sortAlpha(a, b){
   if (a.toUpperCase()<b.toUpperCase()){
     return -1

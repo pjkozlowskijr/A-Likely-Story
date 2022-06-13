@@ -1,11 +1,15 @@
-import React, {useContext, useState} from 'react';
-import * as Yup from 'yup';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { useFormik } from 'formik';
-import Button from '../components/Button';
-import { TextField } from '@mui/material';
-import useLogin from '../hooks/useLogin'
-import Error from '../components/Error'
-import {AppContext} from '../context/AppContext'
+import { useContext, useState } from 'react';
+import * as Yup from 'yup';
+import Error from '../components/Error';
+import { AppContext } from '../context/AppContext';
+import useLogin from '../hooks/useLogin';
+
+// ##############################################################
+// Login form
+// ##############################################################
 
 const FormSchema = Yup.object({
     email: Yup.string().email('Must be a valid email format.').required(),
@@ -61,7 +65,7 @@ export default function LoginForm(){
                 error = {formik.touched.password && Boolean(formik.errors.password)}
                 helperText = {formik.touched.password && formik.errors.password}
             />
-            <Button type='submit' sx={{width:'100%', fontWeight:'bold'}}>Login</Button>
+            <Button type='submit' sx={{width:'100%', fontWeight:'bold'}} variant='contained'>Login</Button>
             <Error>{error}</Error>
         </form>
     )

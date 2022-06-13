@@ -1,10 +1,14 @@
-import {useContext} from 'react';
-import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Stack from '@mui/material/Stack';
-import { AppContext } from '../context/AppContext';
+import TextField from '@mui/material/TextField';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {sortTitleAlpha, toTitleCase} from '../helpers'
+import { AppContext } from '../context/AppContext';
+import { sortTitleAlpha, toTitleCase } from '../helpers'
+
+// ##############################################################
+// Autocomplete search field for books in browse all books
+// ##############################################################
 
 export default function Playground() {
   const navigate = useNavigate()
@@ -17,7 +21,7 @@ export default function Playground() {
   }
 
   return (
-    <Stack spacing={1} sx={{width:'100%', mb:3}}>
+    <Stack spacing={1} sx={{width:'100%', mb:2}}>
       <Autocomplete
         id="auto-complete"
         options={books}
@@ -26,9 +30,9 @@ export default function Playground() {
         autoHighlight
         includeInputInList
         clearOnEscape
-        renderInput={(params) => (
-          <TextField {...params} label="Search for book..." variant="standard" />
-        )}
+        renderInput={
+          (params) => (<TextField {...params} label="Search for book..." variant="standard" />)
+        }
         onChange={handleChange}
       />
     </Stack>
