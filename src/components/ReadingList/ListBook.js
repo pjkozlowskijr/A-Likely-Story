@@ -4,9 +4,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../../context/AppContext';
 import { toTitleCase } from '../../helpers';
 import AddRemoveListBook from './AddRemoveListBook';
 
@@ -15,16 +13,7 @@ import AddRemoveListBook from './AddRemoveListBook';
 // ##############################################################
 
 export default function ListBook({book}) {
-  const {readingList} = useContext(AppContext)
   const navigate = useNavigate()
-  const [qty, setQty] = useState(readingList.filter((listBook)=>listBook.title === book.title).length)
-
-  useEffect(
-      ()=>{
-          setQty(readingList.filter((listBook)=>listBook.title === book.title).length)
-      },
-      [readingList, book]
-  )
 
   return (
     <Card sx={{display:'flex', width:'50%', margin:'auto', p:1, mb:2}}>

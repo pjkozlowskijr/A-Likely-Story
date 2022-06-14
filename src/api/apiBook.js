@@ -37,7 +37,8 @@ const getBook = async (id, cancelToken) => {
     }
 }
 
-export default {
+const apis = {
     getAllBooks,
     getBook
 }
+export default apis 
