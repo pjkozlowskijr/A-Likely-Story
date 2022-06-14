@@ -1,7 +1,7 @@
 import React from 'react'
 import { ThemeProvider } from '@mui/material/styles';
 import { createContext, useState } from 'react';
-import getTheme from '../themes/Base';
+import getTheme from '../themes/base';
 
 // ##############################################################
 // Theme context
