@@ -19,3 +19,4 @@ This ReactJS project allows users to browse books, view book details, and manage
 
 ### Challenges 
 
+This was my first time working with ReactJS. Learning how to use and navigate the library was a great learning experience. The most difficult part was learning the hooks and how to implement them in my project. It took some trial and error, but by the end of the project, I started to feel much more comfortable. Another aspect that was challenging was the sort/filter feature I built for the view to browse all books. It required a lot of useState and useEffect, as well as passing data from a child to parent. Right now, you can only sort or filter, but not both at the same time. I hope expand on this functionality in the future. 
