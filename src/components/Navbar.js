@@ -110,7 +110,7 @@ export default function PersistentDrawerLeft({children}) {
             </Link>
           </Box>
           <Typography variant="h6" noWrap component="div">
-            Authors' Attic
+            Ban Bombs Not Books
           </Typography>
         </Toolbar>
       </AppBar>
