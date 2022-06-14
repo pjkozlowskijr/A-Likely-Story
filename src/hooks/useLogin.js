@@ -22,7 +22,7 @@ export default function useLogin(loginCreds, setLoginCreds, setError, setUser) {
                         setAlert({msg: 'You are now logged in!', cat:'success'})
                         setUser(response.user)
                         setLoginCreds({})
-                        navigate('/')
+                        navigate('/ReactLibrary')
                     }
                     setError(response.error)
                 }

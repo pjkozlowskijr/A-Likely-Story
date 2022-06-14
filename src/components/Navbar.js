@@ -105,7 +105,7 @@ export default function PersistentDrawerLeft({children}) {
             <MenuIcon />
           </IconButton>
           <Box sx={{mr:3}}>
-            <Link to='/'>
+            <Link to='/ReactLibrary'>
               <img height="40px" style={{verticalAlign:'top'}}src="https://res.cloudinary.com/detcvmtip/image/upload/v1655136951/bookstore/android-chrome-192x192_j0er7h.png" alt="Books"/>
             </Link>
           </Box>
