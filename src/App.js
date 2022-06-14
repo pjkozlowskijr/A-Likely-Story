@@ -18,7 +18,7 @@ function App() {
       <Navbar>
         <Box sx={{minHeight:'100%'}}>
           <Routes>
-            <Route path='/' element={<Home/>}/>
+            <Route path='/ReactLibrary' element={<Home/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/logout' element={<Logout/>}/>
             <Route path='/browse' element={<BrowseBooks/>}/>
