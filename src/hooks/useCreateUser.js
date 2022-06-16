@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 // ##############################################################
 
 export default function useCreateUser(data) {
-    const {user, setAlert} = useContext(AppContext)
+    const {setAlert} = useContext(AppContext)
     const navigate = useNavigate()
     useEffect(
         () => {
@@ -29,6 +29,6 @@ export default function useCreateUser(data) {
             }
             return () => {source.cancel()}
         },
-        [user, data, setAlert, navigate]
+        [data, setAlert, navigate]
     )
 }
