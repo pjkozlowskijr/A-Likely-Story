@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import AlertPopUp from './components/AlertPopUp';
 import Navbar from './components/Navbar';
 import BrowseBooks from './views/BrowseBooks';
