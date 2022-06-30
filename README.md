@@ -4,7 +4,9 @@
 
 ## About This Project
 
-This ReactJS project allows users to browse books, view book details, and manage a reading list. Users can create an account, login, edit their profile, and delete their account. Once a user is logged in, they can add/remove books from their reading list. All book info comes from a prexisting PostgreSQL database provided by a teammate and was accessed using RESTful APIs. 
+This ReactJS project allows users to browse books, view book details, and manage a reading list. Users can create an account, login, edit their profile, and delete their account. Once a user is logged in, they can add/remove books from their reading list. All book info comes from a prexisting PostgreSQL database provided by a teammate and was accessed using RESTful APIs.
+
+Check out the deployed version at [https://pjkozlowskijr.github.io/Reading-List-Frontend/](https://pjkozlowskijr.github.io/Reading-List-Frontend/).
 
 ## Languages & Tools Used
 <div>
