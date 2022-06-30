@@ -1,7 +1,7 @@
 {
   "name": "bookstore",
   "version": "0.1.0",
-  "homepage": "https://pjkozlowskijr.github.io/Reading-List-Frontend",
+  "homepage": "https://pjkozlowskijr.github.io/Ban-Bombs-Not-Books",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
