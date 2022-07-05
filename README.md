@@ -1,12 +1,12 @@
-# Ban Bombs Not Books
+# A Likely Story
 
-<img src='https://res.cloudinary.com/detcvmtip/image/upload/v1655145714/bookstore/readbannedbooks_zzn0ih.jpg' height='200'/>
+<img src='https://res.cloudinary.com/detcvmtip/image/upload/v1657051274/bookstore/School-Books-PNG-Clipart-Background_kj3ylx.png' height='200'/>
 
 ## About This Project
 
 This ReactJS project allows users to browse books, view book details, and manage a reading list. Users can create an account, login, edit their profile, and delete their account. Once a user is logged in, they can add/remove books from their reading list. All book info comes from a prexisting PostgreSQL database provided by a teammate and was accessed using RESTful APIs.
 
-Check out the deployed version at [https://pjkozlowskijr.github.io/Ban-Bombs-Not-Books/](https://pjkozlowskijr.github.io/Ban-Bombs-Not-Books/).
+Check out the deployed version at [https://pjkozlowskijr.github.io/A-Likely-Story/](https://pjkozlowskijr.github.io/A-Likely-Story/).
 
 ## Languages & Tools Used
 <div>
