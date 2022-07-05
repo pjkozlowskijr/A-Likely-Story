@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Ban-Bombs-Not-Books/static/css/main.31d6cfe0.css",
-    "main.js": "/Ban-Bombs-Not-Books/static/js/main.8f5cf358.js",
-    "static/js/787.08f3454f.chunk.js": "/Ban-Bombs-Not-Books/static/js/787.08f3454f.chunk.js",
-    "index.html": "/Ban-Bombs-Not-Books/index.html",
-    "main.8f5cf358.js.map": "/Ban-Bombs-Not-Books/static/js/main.8f5cf358.js.map",
-    "787.08f3454f.chunk.js.map": "/Ban-Bombs-Not-Books/static/js/787.08f3454f.chunk.js.map"
+    "main.css": "/A-Likely-Story/static/css/main.31d6cfe0.css",
+    "main.js": "/A-Likely-Story/static/js/main.3c38c2b4.js",
+    "static/js/787.08f3454f.chunk.js": "/A-Likely-Story/static/js/787.08f3454f.chunk.js",
+    "index.html": "/A-Likely-Story/index.html",
+    "main.3c38c2b4.js.map": "/A-Likely-Story/static/js/main.3c38c2b4.js.map",
+    "787.08f3454f.chunk.js.map": "/A-Likely-Story/static/js/787.08f3454f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.31d6cfe0.css",
-    "static/js/main.8f5cf358.js"
+    "static/js/main.3c38c2b4.js"
   ]
 }
